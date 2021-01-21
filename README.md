@@ -1,5 +1,5 @@
 A `custom_component` for [Home-Assistant](https://www.home-assistant.io/) that implements a `binary_sensor`
-for the existence of weather alerts for your (Country, Region) on [meteoalarmm.eu](https://www.meteoalarm.eu/).
+for the existence of weather alerts for your (Country, Region) on [meteoalarm.eu](https://www.meteoalarm.eu/).
 
 You will get a `binary_sensor.meteoalarmeu` identity that is `on` when there are alerts for your region and
 with attributes useful for automations.
@@ -77,6 +77,7 @@ For the attribute `awareness_type` the possible values are:
  Snow/Ice
  Thunderstorms
  Wind
+ SYSTEM
 ```
 
 
@@ -84,13 +85,22 @@ For the attribute `awareness_level` the possibilities are (with the meaning foll
 
 ```
 Red
-  The weather is very dangerous. Exceptionally intense meteorological phenomena have been forecast. Major damage and accidents are likely, in many cases with threat to life and limb, over a wide area. Keep frequently informed about detailed expected meteorological conditions and risks. Follow orders and any advice given by your authorities under all circumstances, be prepared for extraordinary measures.
+  The weather is very dangerous. Exceptionally intense meteorological phenomena have been forecast.
+  Major damage and accidents are likely, in many cases with threat to life and limb, over a wide
+  area. Keep frequently informed about detailed expected meteorological conditions and risks.
+  Follow orders and any advice given by your authorities under all circumstances,
+  be prepared for extraordinary measures.
 
 Orange
-  The weather is dangerous. Unusual meteorological phenomena have been forecast. Damage and casualties are likely to happen. Be very vigilant and keep regularly informed about the detailed expected meteorological conditions. Be aware of the risks that might be unavoidable. Follow any advice given by your authorities.
+  The weather is dangerous. Unusual meteorological phenomena have been forecast.
+  Damage and casualties are likely to happen. Be very vigilant and keep regularly informed
+  about the detailed expected meteorological conditions. Be aware of the risks that might be
+  unavoidable. Follow any advice given by your authorities.
 
 Yellow
-  The weather is potentially dangerous. The weather phenomena that have been forecast are not unusual, but be attentive if you intend to practice activities exposed to meteorological risks. Keep informed about the expected meteorological conditions and do not take any avoidable risk.
+  The weather is potentially dangerous. The weather phenomena that have been forecast are not
+  unusual, but be attentive if you intend to practice activities exposed to meteorological risks.
+  Keep informed about the expected meteorological conditions and do not take any avoidable risk.
 
 Green
   No particular awareness of the weather is required.
