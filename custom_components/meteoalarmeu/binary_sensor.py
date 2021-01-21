@@ -42,7 +42,7 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
     try:
         api = MeteoAlarm(country, region)
     except (KeyError, MeteoAlarmException):
-        _LOGGER.error("Wrong country code or region name")
+        _LOGGER.error("Wrong country code or region name?")
         return
 
     add_entities([MeteoAlarmBinarySensor(api, name)], True)
