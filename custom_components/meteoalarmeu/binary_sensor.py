@@ -1,7 +1,7 @@
 """Binary Sensor for MeteoAlarmEU."""
 
 import logging
-from datetime import timedelta
+from datetime import datetime, timedelta
 
 import homeassistant.helpers.config_validation as cv
 from homeassistant.components.binary_sensor import (
@@ -11,7 +11,10 @@ from homeassistant.components.binary_sensor import (
 )
 from homeassistant.const import ATTR_ATTRIBUTION, CONF_NAME
 
-from meteoalarm_rssapi import MeteoAlarm, MeteoAlarmException
+from meteoalarm_rssapi import (
+    MeteoAlarm,
+    MeteoAlarmException,
+)
 
 import voluptuous as vol
 
@@ -42,7 +45,7 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
     try:
         api = MeteoAlarm(country, region)
     except (KeyError, MeteoAlarmException):
-        _LOGGER.error("Wrong country code or region name?")
+        _LOGGER.error("Wrong country code or region name")
         return
 
     add_entities([MeteoAlarmBinarySensor(api, name)], True)
@@ -81,7 +84,21 @@ class MeteoAlarmBinarySensor(BinarySensorEntity):
 
     def update(self):
         """Update device state."""
-        alert = self._api.alerts()
+        try:
+            alert = self._api.alerts()
+        except (KeyError, MeteoAlarmException):
+            _LOGGER.error("Bad response from meteoalarm.eu")
+            now = datetime.now().strftime("%d.%m.%Y %H:%M")
+            self._attributes = {
+                "message_id": 999999,
+                "awareness_type": "SYSTEM",
+                "awareness_level": "White",
+                "from": now,
+                "until": now,
+                "message": "Bad response from meteoalarm.eu",
+            }
+            self._state = True
+            return
         if alert:
             self._attributes = alert[0]
             self._state = True
