@@ -77,7 +77,6 @@ For the attribute `awareness_type` the possible values are:
  Snow/Ice
  Thunderstorms
  Wind
- SYSTEM
 ```
 
 
