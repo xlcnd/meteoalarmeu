@@ -26,18 +26,18 @@ CONF_COUNTRY = "country"
 CONF_REGION = "region"
 DEFAULT_NAME = "meteoalarmeu"
 DEFAULT_AWARENESS_TYPES = [
- 'Avalanches',
- 'Coastal Event',
- 'Extreme high temperature',
- 'Extreme low temperature',
- 'Flood',
- 'Fog',
- 'Forestfire',
- 'Rain',
- 'Rain-Flood',
- 'Snow/Ice',
- 'Thunderstorms',
- 'Wind'
+    "Avalanches",
+    "Coastal Event",
+    "Extreme high temperature",
+    "Extreme low temperature",
+    "Flood",
+    "Fog",
+    "Forestfire",
+    "Rain",
+    "Rain-Flood",
+    "Snow/Ice",
+    "Thunderstorms",
+    "Wind",
 ]
 SCAN_INTERVAL = timedelta(minutes=30)
 
@@ -48,6 +48,8 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
         vol.Optional(CONF_NAME, default=DEFAULT_NAME): cv.string,
         vol.Optional(CONF_AWARENESS_TYPES, default=DEFAULT_AWARENESS_TYPES): vol.All(
             cv.ensure_list, [vol.In(DEFAULT_AWARENESS_TYPES)]
+        ),
+        # cv.ensure_list, [cv.string]),
     },
 )
 
@@ -110,7 +112,7 @@ class MeteoAlarmBinarySensor(BinarySensorEntity):
         """Update device state."""
         try:
             msgs = self._api.alerts()
-            alert = [m for m in msgs if m['awareness_type'] in self._awareness_types]
+            alert = [m for m in msgs if m["awareness_type"] in self._awareness_types]
         except (KeyError, MeteoAlarmException):
             _LOGGER.error("Bad response from meteoalarm.eu")
             self._available = False
