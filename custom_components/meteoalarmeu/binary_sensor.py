@@ -1,7 +1,7 @@
 """Binary Sensor for MeteoAlarmEU."""
 
 import logging
-from datetime import datetime, timedelta
+from datetime import timedelta
 
 import homeassistant.helpers.config_validation as cv
 from homeassistant.components.binary_sensor import (
@@ -60,6 +60,7 @@ class MeteoAlarmBinarySensor(BinarySensorEntity):
         self._attributes = {}
         self._state = None
         self._api = api
+        self._available = True
 
     @property
     def name(self):
@@ -82,23 +83,20 @@ class MeteoAlarmBinarySensor(BinarySensorEntity):
         """Return the device class of this binary sensor."""
         return DEVICE_CLASS_SAFETY
 
+    @property
+    def available(self):
+        """Return true if the device is available."""
+        return self._available
+
     def update(self):
         """Update device state."""
         try:
             alert = self._api.alerts()
         except (KeyError, MeteoAlarmException):
             _LOGGER.error("Bad response from meteoalarm.eu")
-            now = datetime.now().strftime("%d.%m.%Y %H:%M")
-            self._attributes = {
-                "message_id": 999999,
-                "awareness_type": "SYSTEM",
-                "awareness_level": "White",
-                "from": now,
-                "until": now,
-                "message": "Bad response from meteoalarm.eu",
-            }
-            self._state = True
+            self._available = False
             return
+        self._available = True
         if alert:
             self._attributes = alert[0]
             self._state = True
