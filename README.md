@@ -14,8 +14,19 @@ with attributes useful for automations.
 ```
 binary_sensor:
 - platform: meteoalarmeu
+  name: 'meteoalarmeu'
   country: 'DE'
   region: 'Kreis Ahrweiler'
+  awareness_types:
+  - Extreme high temperature
+  - Extreme low temperature
+  - Flood
+  - Fog
+  - Forestfire
+  - Rain
+  - Rain-Flood
+  - Thunderstorms
+  - Wind 
 
 ```
 

@@ -25,6 +25,20 @@ ATTRIBUTION = "Information provided by meteoalarm.eu"
 CONF_COUNTRY = "country"
 CONF_REGION = "region"
 DEFAULT_NAME = "meteoalarmeu"
+DEFAULT_AWARENESS_TYPES = [
+ 'Avalanches',
+ 'Coastal Event',
+ 'Extreme high temperature',
+ 'Extreme low temperature',
+ 'Flood',
+ 'Fog',
+ 'Forestfire',
+ 'Rain',
+ 'Rain-Flood',
+ 'Snow/Ice',
+ 'Thunderstorms',
+ 'Wind'
+]
 SCAN_INTERVAL = timedelta(minutes=30)
 
 PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
@@ -32,6 +46,8 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
         vol.Required(CONF_COUNTRY): cv.string,
         vol.Required(CONF_REGION): cv.string,
         vol.Optional(CONF_NAME, default=DEFAULT_NAME): cv.string,
+        vol.Optional(CONF_AWARENESS_TYPES, default=DEFAULT_AWARENESS_TYPES): vol.All(
+            cv.ensure_list, [vol.In(DEFAULT_AWARENESS_TYPES)]
     },
 )
 
@@ -41,6 +57,7 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
     country = config[CONF_COUNTRY]
     region = config[CONF_REGION]
     name = config[CONF_NAME]
+    awareness_types = config[CONF_AWARENESS_TYPES]
 
     try:
         api = MeteoAlarm(country, region)
@@ -54,10 +71,11 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
 class MeteoAlarmBinarySensor(BinarySensorEntity):
     """Representation of a MeteoAlarmEU binary sensor."""
 
-    def __init__(self, api, name):
+    def __init__(self, api, name, awareness_types):
         """Initialize the MeteoAlarmEU binary sensor."""
         self._name = name
         self._attributes = {}
+        self._awareness_types = awareness_types
         self._state = None
         self._api = api
         self._available = True
@@ -91,7 +109,8 @@ class MeteoAlarmBinarySensor(BinarySensorEntity):
     def update(self):
         """Update device state."""
         try:
-            alert = self._api.alerts()
+            msgs = self._api.alerts()
+            alert = [m for m in msgs if m['awareness_type'] in self._awareness_types]
         except (KeyError, MeteoAlarmException):
             _LOGGER.error("Bad response from meteoalarm.eu")
             self._available = False
