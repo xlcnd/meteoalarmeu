@@ -109,10 +109,10 @@ White
 ```
 
 
-###More advanced config
+### More advanced config
 
 These alarms could get very noisy (with date/time revisions every 30 minutes as
-best forecasts are available)! By default you subscribe to **all** type of events. 
+best forecasts are available)! By default you subscribe to **all** type of events.
 So is best to limite the type of events that you subscribe. For that, you can use
 the `awareness_types` list. As an example:
 
@@ -129,7 +129,7 @@ binary_sensor:
   - Fog
   - Forestfire
   - Thunderstorms
-  - Wind 
+  - Wind
 
 ```
 
