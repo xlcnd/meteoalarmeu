@@ -55,7 +55,7 @@ automation:
         {{ state_attr('binary_sensor.meteoalarmeu', 'message') }}
 
         Effective from {{ state_attr('binary_sensor.meteoalarmeu', 'from') }} until {{ state_attr('binary_sensor.meteoalarmeu', 'until') }}
-      notification_id: "meteoalarm-EUMETNET-{{ state_attr('binary_sensor.meteoalarmeu', 'message_id') }}"
+      notification_id: "meteoalarm-EUMETNET-{{ state_attr('binary_sensor.meteoalarmeu', 'alert_id') }}"
 
 ```
 
