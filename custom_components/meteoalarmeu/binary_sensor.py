@@ -61,11 +61,6 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
     region = config[CONF_REGION]
     name = config[CONF_NAME]
     awareness_types = config[CONF_AWARENESS_TYPES]
-    _LOGGER.info(
-        "A binary_sensor was created for country {} and region {}".format(
-            country, region
-        )
-    )
 
     try:
         api = MeteoAlarm(country, region)
@@ -73,6 +68,11 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
         _LOGGER.error("Wrong country code or region name")
         return
 
+    _LOGGER.info(
+        "A binary_sensor was created for country {} and region {}".format(
+            country, region
+        )
+    )
     add_entities([MeteoAlarmBinarySensor(api, name, awareness_types)], True)
 
 
@@ -123,6 +123,8 @@ class MeteoAlarmBinarySensor(BinarySensorEntity):
             _LOGGER.error("Bad response from meteoalarm.eu")
             self._available = False
             return
+        if not self._available:
+            _LOGGER.info("meteoalarm.eu server is now OK")
         self._available = True
         if alert:
             self._attributes = alert[0]
