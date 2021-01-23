@@ -24,6 +24,7 @@ _LOGGER = logging.getLogger(__name__)
 ATTRIBUTION = "Information provided by meteoalarm.eu"
 CONF_COUNTRY = "country"
 CONF_REGION = "region"
+CONF_AWARENESS_TYPES = "awareness_types"
 DEFAULT_NAME = "meteoalarmeu"
 DEFAULT_AWARENESS_TYPES = [
     "Avalanches",
@@ -47,9 +48,9 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
         vol.Required(CONF_REGION): cv.string,
         vol.Optional(CONF_NAME, default=DEFAULT_NAME): cv.string,
         vol.Optional(CONF_AWARENESS_TYPES, default=DEFAULT_AWARENESS_TYPES): vol.All(
-            cv.ensure_list, [vol.In(DEFAULT_AWARENESS_TYPES)]
+            cv.ensure_list, [cv.string]
         ),
-        # cv.ensure_list, [cv.string]),
+        # cv.ensure_list, [vol.In(DEFAULT_AWARENESS_TYPES)]
     },
 )
 
@@ -67,7 +68,7 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
         _LOGGER.error("Wrong country code or region name")
         return
 
-    add_entities([MeteoAlarmBinarySensor(api, name)], True)
+    add_entities([MeteoAlarmBinarySensor(api, name, awareness_types)], True)
 
 
 class MeteoAlarmBinarySensor(BinarySensorEntity):

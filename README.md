@@ -14,20 +14,8 @@ with attributes useful for automations.
 ```
 binary_sensor:
 - platform: meteoalarmeu
-  name: 'meteoalarmeu'
   country: 'DE'
   region: 'Kreis Ahrweiler'
-  awareness_types:
-  - Extreme high temperature
-  - Extreme low temperature
-  - Flood
-  - Fog
-  - Forestfire
-  - Rain
-  - Rain-Flood
-  - Thunderstorms
-  - Wind 
-
 ```
 
 **NOTE**: You should adapt the country and region to your case!
@@ -119,3 +107,30 @@ White
   Missing, insufficient, outdated or suspicious data.
 
 ```
+
+
+###More advanced config
+
+These alarms could get very noisy (with date/time revisions every 30 minutes as
+best forecasts are available)! By default you subscribe to **all** type of events. 
+So is best to limite the type of events that you subscribe. For that, you can use
+the `awareness_types` list. As an example:
+
+```
+binary_sensor:
+- platform: meteoalarmeu
+  name: 'meteoalarmeu_ahrweiler'
+  country: 'DE'
+  region: 'Kreis Ahrweiler'
+  awareness_types:
+  - Extreme high temperature
+  - Extreme low temperature
+  - Flood
+  - Fog
+  - Forestfire
+  - Thunderstorms
+  - Wind 
+
+```
+
+As you can see, the name of the sensor can be changed too.
