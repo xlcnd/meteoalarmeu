@@ -61,7 +61,7 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
     region = config[CONF_REGION]
     name = config[CONF_NAME]
     awareness_types = config[CONF_AWARENESS_TYPES]
-
+    _LOGGER.info("A binary_sensor was created for country {} and region {}".format(country, region)
     try:
         api = MeteoAlarm(country, region)
     except (KeyError, MeteoAlarmException):
