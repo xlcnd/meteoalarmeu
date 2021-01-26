@@ -20,7 +20,7 @@ binary_sensor:
 
 **NOTE**: You should adapt the country and region to your case!
 
-You need to know your iso 2-letter country code (e.g. DE) and the name of your region
+You need to know your iso 2-letter country code (e.g. DE) and the **exact name** of your region
 **as reported by your national agency to meteoalarm.eu** (e.g. Kreis Ahrweiler).
 For that, please check the page for your country in [meteoalarm.eu](https://www.meteoalarm.eu/).
 
@@ -46,7 +46,7 @@ automation:
       message: >
         {{ state_attr('binary_sensor.meteoalarmeu', 'message') }}
 
-        Effective from {{ state_attr('binary_sensor.meteoalarmeu', 'from') }} until {{ state_attr('binary_sensor.meteoalarmeu', 'until') }}
+        Effective from {{ as_timestamp(state_attr('binary_sensor.meteoalarmeu', 'from')) | timestamp_custom('%d-%m-%Y %H:%M') }} until {{ as_timestamp(state_attr('binary_sensor.meteoalarmeu', 'until')) | timestamp_custom('%d-%m-%Y %H:%M') }}
   - service: persistent_notification.create
     data:
       title: >
@@ -54,7 +54,7 @@ automation:
       message: >
         {{ state_attr('binary_sensor.meteoalarmeu', 'message') }}
 
-        Effective from {{ state_attr('binary_sensor.meteoalarmeu', 'from') }} until {{ state_attr('binary_sensor.meteoalarmeu', 'until') }}
+        Effective from {{ as_timestamp(state_attr('binary_sensor.meteoalarmeu', 'from')) | timestamp_custom('%d-%m-%Y %H:%M') }} until {{ as_timestamp(state_attr('binary_sensor.meteoalarmeu', 'until')) | timestamp_custom('%d-%m-%Y %H:%M') }}
       notification_id: "meteoalarm-EUMETNET-{{ state_attr('binary_sensor.meteoalarmeu', 'alert_id') }}"
 
 ```
