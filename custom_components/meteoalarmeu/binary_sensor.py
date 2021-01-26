@@ -4,6 +4,7 @@ import logging
 from datetime import timedelta
 
 import homeassistant.helpers.config_validation as cv
+from homeassistant.helpers.template import timestamp_local
 from homeassistant.components.binary_sensor import (
     BinarySensorEntity,
     DEVICE_CLASS_SAFETY,
@@ -127,7 +128,10 @@ class MeteoAlarmBinarySensor(BinarySensorEntity):
             _LOGGER.info("meteoalarm.eu server is now OK")
         self._available = True
         if alert:
-            self._attributes = alert[0]
+            alarm = alert[0]
+            alarm['from'] = timestamp_local(alarm['from'])
+            alarm['until'] = timestamp_local(alarm['until'])
+            self._attributes = alarm
             self._state = True
         else:
             self._attributes = {}

@@ -46,7 +46,7 @@ automation:
       message: >
         {{ state_attr('binary_sensor.meteoalarmeu', 'message') }}
 
-        Effective from {{ as_timestamp(state_attr('binary_sensor.meteoalarmeu', 'from')) | timestamp_custom('%d-%m-%Y %H:%M') }} until {{ as_timestamp(state_attr('binary_sensor.meteoalarmeu', 'until')) | timestamp_custom('%d-%m-%Y %H:%M') }}
+        Effective from {{ state_attr('binary_sensor.meteoalarmeu', 'from') }} until {{ state_attr('binary_sensor.meteoalarmeu', 'until') }}
   - service: persistent_notification.create
     data:
       title: >
@@ -54,7 +54,7 @@ automation:
       message: >
         {{ state_attr('binary_sensor.meteoalarmeu', 'message') }}
 
-        Effective from {{ as_timestamp(state_attr('binary_sensor.meteoalarmeu', 'from')) | timestamp_custom('%d-%m-%Y %H:%M') }} until {{ as_timestamp(state_attr('binary_sensor.meteoalarmeu', 'until')) | timestamp_custom('%d-%m-%Y %H:%M') }}
+        Effective from {{ state_attr('binary_sensor.meteoalarmeu', 'from') }} until {{ state_attr('binary_sensor.meteoalarmeu', 'until') }}
       notification_id: "meteoalarm-EUMETNET-{{ state_attr('binary_sensor.meteoalarmeu', 'alert_id') }}"
 
 ```
