@@ -5,7 +5,7 @@ from datetime import timedelta
 
 import homeassistant.helpers.config_validation as cv
 from homeassistant.helpers.template import (
-    forgiving_as_timestamp as as_timestamp, 
+    forgiving_as_timestamp as as_timestamp,
     timestamp_local,
 )
 from homeassistant.components.binary_sensor import (
@@ -132,8 +132,11 @@ class MeteoAlarmBinarySensor(BinarySensorEntity):
         self._available = True
         if alert:
             alarm = alert[0]
-            alarm['from'] = timestamp_local(as_timestamp(alarm['from']))
-            alarm['until'] = timestamp_local(as_timestamp(alarm['until']))
+            try:
+                alarm['from'] = timestamp_local(as_timestamp(alarm['from']))
+                alarm['until'] = timestamp_local(as_timestamp(alarm['until']))
+            except:
+                _LOGGER.error("Not possible to convert to local time.")
             self._attributes = alarm
             self._state = True
         else:
