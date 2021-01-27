@@ -138,8 +138,10 @@ binary_sensor:
 
 ```
 
-As you can see, the name of the sensor can be changed too.
+As you can see, the **name** of the sensor can be changed too.
 
 
 **NOTE:** If by any reason the server becames unavailable or sends an error status (and this happens a lot with meteoalarm.eu!)
 the sensor becomes unavailable, if in the next update the server is ok, it becomes available again.
+
+**TIP:** Use together with the Google Calendar integration for a really advanced solution...
