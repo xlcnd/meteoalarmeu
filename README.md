@@ -1,3 +1,9 @@
+![GitHub tests](https://github.com/xlcnd/meteoalarmeu/workflows/tests/badge.svg)
+![GitHub issues by-label](https://img.shields.io/github/issues/xlcnd/meteoalarmeu/bug?label=bugs)
+![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/xlcnd/meteoalarmeu?label=version&sort=semver)
+![GitHub all releases](https://img.shields.io/github/downloads/xlcnd/meteoalarmeu/total)
+
+
 A `custom_component` for [Home-Assistant](https://www.home-assistant.io/) that implements a `binary_sensor`
 for the existence of weather alerts for your (Country, Region) on [meteoalarm.eu](https://www.meteoalarm.eu/).
 
