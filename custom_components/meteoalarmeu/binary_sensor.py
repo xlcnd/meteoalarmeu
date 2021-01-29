@@ -18,6 +18,7 @@ from homeassistant.const import ATTR_ATTRIBUTION, CONF_NAME
 from meteoalarm_rssapi import (
     MeteoAlarm,
     MeteoAlarmException,
+    MeteoAlarmUnrecognizedRegionError,
 )
 
 import voluptuous as vol
@@ -68,6 +69,8 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
 
     try:
         api = MeteoAlarm(country, region)
+    except MeteoAlarmUnrecognizedRegionError:
+        _LOGGER.error("Wrong region name (check 'meteoalarm.eu' for the EXACT name)")
     except (KeyError, MeteoAlarmException):
         _LOGGER.error("Wrong country code or region name")
         return
