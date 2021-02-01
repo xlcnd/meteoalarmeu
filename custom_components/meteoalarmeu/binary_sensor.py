@@ -19,6 +19,7 @@ from meteoalarm_rssapi import (
     MeteoAlarm,
     MeteoAlarmException,
     MeteoAlarmUnrecognizedRegionError,
+    awareness_types,
 )
 
 import voluptuous as vol
@@ -31,20 +32,21 @@ CONF_COUNTRY = "country"
 CONF_REGION = "region"
 CONF_AWARENESS_TYPES = "awareness_types"
 DEFAULT_NAME = "meteoalarmeu"
-DEFAULT_AWARENESS_TYPES = [
-    "Avalanches",
-    "Coastal Event",
-    "Extreme high temperature",
-    "Extreme low temperature",
-    "Flood",
-    "Fog",
-    "Forestfire",
-    "Rain",
-    "Rain-Flood",
-    "Snow/Ice",
-    "Thunderstorms",
-    "Wind",
-]
+DEFAULT_AWARENESS_TYPES = awareness_types
+# DEFAULT_AWARENESS_TYPES = [
+#     "Avalanches",
+#     "Coastal Event",
+#     "Extreme high temperature",
+#     "Extreme low temperature",
+#     "Flood",
+#     "Fog",
+#     "Forestfire",
+#     "Rain",
+#     "Rain-Flood",
+#     "Snow/Ice",
+#     "Thunderstorms",
+#     "Wind",
+# ]
 SCAN_INTERVAL = timedelta(minutes=30)
 
 PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
@@ -52,10 +54,9 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
         vol.Required(CONF_COUNTRY): cv.string,
         vol.Required(CONF_REGION): cv.string,
         vol.Optional(CONF_NAME, default=DEFAULT_NAME): cv.string,
-        vol.Optional(CONF_AWARENESS_TYPES, default=DEFAULT_AWARENESS_TYPES): vol.All( 
+        vol.Optional(CONF_AWARENESS_TYPES, default=DEFAULT_AWARENESS_TYPES): vol.All(
             cv.ensure_list, [vol.In(DEFAULT_AWARENESS_TYPES)]
         ),
-        # cv.ensure_list, [cv.string]
     },
 )
 
