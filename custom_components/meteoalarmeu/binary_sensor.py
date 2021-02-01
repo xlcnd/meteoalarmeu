@@ -33,20 +33,7 @@ CONF_REGION = "region"
 CONF_AWARENESS_TYPES = "awareness_types"
 DEFAULT_NAME = "meteoalarmeu"
 DEFAULT_AWARENESS_TYPES = awareness_types
-# DEFAULT_AWARENESS_TYPES = [
-#     "Avalanches",
-#     "Coastal Event",
-#     "Extreme high temperature",
-#     "Extreme low temperature",
-#     "Flood",
-#     "Fog",
-#     "Forestfire",
-#     "Rain",
-#     "Rain-Flood",
-#     "Snow/Ice",
-#     "Thunderstorms",
-#     "Wind",
-# ]
+
 SCAN_INTERVAL = timedelta(minutes=30)
 
 PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
