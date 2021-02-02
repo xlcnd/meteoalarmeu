@@ -144,5 +144,3 @@ As you can see, the **name** of the sensor can be changed too.
 
 If by any reason the server becames unavailable or sends an error status (and this happens a lot with meteoalarm.eu!)
 the **sensor becomes unavailable too**, if in the next update the server is ok, **it becomes available again**.
-
-**TIP:** Use together with the Google Calendar integration for a really advanced solution...
