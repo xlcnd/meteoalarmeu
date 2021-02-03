@@ -1,6 +1,6 @@
-[![GitHub issues by-label](https://img.shields.io/github/issues/xlcnd/meteoalarmeu/bug?label=bugs)][1]
+[![GitHub issues by-label](https://img.shields.io/github/issues/xlcnd/meteoalarmeu/bug?label=bugs)][2]
 [![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/xlcnd/meteoalarmeu?label=version&sort=semver)][3]
-[![GitHub all releases](https://img.shields.io/github/downloads/xlcnd/meteoalarmeu/total)][2]
+[![GitHub all releases](https://img.shields.io/github/downloads/xlcnd/meteoalarmeu/total)][1]
 
 
 A `custom_component` for [Home-Assistant](https://www.home-assistant.io/) that implements a `binary_sensor`
