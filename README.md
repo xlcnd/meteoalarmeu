@@ -1,4 +1,7 @@
-<div style="text-align:center"><img src=".github/logo.png" /></div>
+<p align="center">
+  <img width="601" height="256" src=".github/logo.png">
+</p>
+
 
 ---
 
