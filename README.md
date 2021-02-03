@@ -1,6 +1,6 @@
-![GitHub issues by-label](https://img.shields.io/github/issues/xlcnd/meteoalarmeu/bug?label=bugs)
-![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/xlcnd/meteoalarmeu?label=version&sort=semver)
-![GitHub all releases](https://img.shields.io/github/downloads/xlcnd/meteoalarmeu/total)
+[![GitHub issues by-label](https://img.shields.io/github/issues/xlcnd/meteoalarmeu/bug?label=bugs)][1]
+[![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/xlcnd/meteoalarmeu?label=version&sort=semver)][3]
+[![GitHub all releases](https://img.shields.io/github/downloads/xlcnd/meteoalarmeu/total)][2]
 
 
 A `custom_component` for [Home-Assistant](https://www.home-assistant.io/) that implements a `binary_sensor`
@@ -144,3 +144,7 @@ As you can see, the **name** of the sensor can be changed too.
 
 If by any reason the server becames unavailable or sends an error status (and this happens a lot with meteoalarm.eu!)
 the **sensor becomes unavailable too**, if in the next update the server is ok, **it becomes available again**.
+
+[1]: https://github.com/xlcnd/meteoalarmeu/releases
+[2]: https://github.com/xlcnd/meteoalarmeu/issues?q=is%3Aissue+is%3Aopen+is%3Abug
+[3]: https://github.com/xlcnd/meteoalarmeu/releases/tag/v0.0.2
