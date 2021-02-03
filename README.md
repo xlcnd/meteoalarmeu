@@ -25,7 +25,7 @@ binary_sensor:
 
 **NOTE**: You should adapt the country and region to your case!
 
-You need to know your iso 2-letter country code (e.g. DE) and the **exact name** of your region
+You need to know your 2-letter iso country code (e.g. DE) and the **exact name** of your region
 **as reported by your national agency to meteoalarm.eu** (e.g. Kreis Ahrweiler).
 For that, please check the page for your country in [meteoalarm.eu](https://www.meteoalarm.eu/).
 
@@ -145,6 +145,6 @@ As you can see, the **name** of the sensor can be changed too.
 If by any reason the server becames unavailable or sends an error status (and this happens a lot with meteoalarm.eu!)
 the **sensor becomes unavailable too**, if in the next update the server is ok, **it becomes available again**.
 
-[1]: https://github.com/xlcnd/meteoalarmeu/archive/v0.1.1.zip
+[1]: https://github.com/xlcnd/meteoalarmeu/archive/v0.1.2.zip
 [2]: https://github.com/xlcnd/meteoalarmeu/issues?q=is%3Aissue+is%3Aopen+is%3Abug
 [3]: https://github.com/xlcnd/meteoalarmeu/releases
