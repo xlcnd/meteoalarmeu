@@ -147,4 +147,4 @@ the **sensor becomes unavailable too**, if in the next update the server is ok, 
 
 [1]: https://github.com/xlcnd/meteoalarmeu/releases
 [2]: https://github.com/xlcnd/meteoalarmeu/issues?q=is%3Aissue+is%3Aopen+is%3Abug
-[3]: https://github.com/xlcnd/meteoalarmeu/releases/tag/v0.0.2
+[3]: https://github.com/xlcnd/meteoalarmeu/releases/tag/v0.1.1
