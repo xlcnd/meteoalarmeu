@@ -1,0 +1,8 @@
+repo:
+  - ./*
+
+test:
+  - custom_components/meteoalrmeu/test/*
+
+core:
+  - custom_components/meteoalrmeu/*
