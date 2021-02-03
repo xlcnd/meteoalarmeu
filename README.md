@@ -1,7 +1,3 @@
-<p align="center">
-  <img width="256" height="256" src="/.github/icon.png">
-</p>
-
 [![GitHub issues by-label](https://img.shields.io/github/issues/xlcnd/meteoalarmeu/bug?label=bugs&style=for-the-badge)][2]
 [![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/xlcnd/meteoalarmeu?label=version&sort=semver&style=for-the-badge)][3]
 [![GitHub download zip](https://img.shields.io/badge/download-zip-blue?style=for-the-badge)][1]
