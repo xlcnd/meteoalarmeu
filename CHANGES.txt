@@ -1,3 +1,4 @@
 v0.0.1, 2021-01-28 -- Initial release (alpha).
 v0.0.2, 2021-02-02 -- 'Old school' component.
 v0.1.0, 2021-02-03 -- 'Old school' component (updated api).
+v0.1.1, 2021-02-03 -- TENTATIVE
