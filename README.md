@@ -20,7 +20,8 @@ with attributes useful for automations.
 
 **How to install?**
 
-If you have [HACS][4], use the normal procedure to install a new integration (*meteoalarmeu*) (**pending approval**!).
+If you have [HACS][4], use the normal procedure to install a new integration (*meteoalarmeu*) (**pending approval**!)
+and see point 3 below.
 
 To do it manually:
 
