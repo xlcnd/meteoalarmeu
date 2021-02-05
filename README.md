@@ -20,9 +20,15 @@ with attributes useful for automations.
 
 **How to install?**
 
-1. Copy the folder `meteoalarmeu` to the folder `custom_components` on your Home-Assistant folder.
+If you have [HACS][4], use the normal procedure to install a new integration (*meteoalarmeu*) (**pending approval**!).
 
-2. Write in your `configuration.yaml` file, the following:
+To do it manually:
+
+1. Download [this][1] file and unzip it.
+
+2. Copy the folder `meteoalarmeu` to the folder `custom_components` on your Home-Assistant folder.
+
+3. Write in your `configuration.yaml` file, the following:
 
 ```
 binary_sensor:
@@ -156,3 +162,4 @@ the **sensor becomes unavailable too**, if in the next update the server is ok, 
 [1]: https://github.com/xlcnd/meteoalarmeu/archive/v2021.1.1.zip
 [2]: https://github.com/xlcnd/meteoalarmeu/issues?q=is%3Aissue+is%3Aopen+is%3Abug
 [3]: https://github.com/xlcnd/meteoalarmeu/releases
+[4]: https://hacs.xyz/
