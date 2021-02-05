@@ -1,10 +1,3 @@
-<p align="center">
-  <img width="601" height="256" src="https://brands.home-assistant.io/meteoalarmeu/logo.png">
-</p>
-
-
----
-
 
 [![GitHub issues by-label](https://img.shields.io/github/issues/xlcnd/meteoalarmeu/bug?label=bugs&style=for-the-badge)][2]
 [![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/xlcnd/meteoalarmeu?label=version&sort=semver&style=for-the-badge)][3]
