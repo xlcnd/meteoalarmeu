@@ -122,7 +122,7 @@ class MeteoAlarmBinarySensor(BinarySensorEntity):
             _LOGGER.info("meteoalarm.eu server is now OK")
         self._available = True
         if alert:
-            # take just the first alert (the others came before!)
+            # take just the first alert (the others will came after!)
             alarm = alert[0]
             try:
                 # change to local date/time (drop the seconds)
