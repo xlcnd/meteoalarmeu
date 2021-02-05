@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="601" height="256" src=".github/logo.png">
+  <img width="601" height="256" src="https://brands.home-assistant.io/meteoalarmeu/logo.png">
 </p>
 
 
