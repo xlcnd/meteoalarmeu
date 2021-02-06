@@ -127,15 +127,14 @@ class MeteoAlarmBinarySensor(BinarySensorEntity):
                     # change to local date/time (drop the seconds)
                     alert["from"] = timestamp_local(as_timestamp(alert["from"]))[:-3]
                     alert["until"] = timestamp_local(as_timestamp(alert["until"]))[:-3]
-                    alert["published"] = timestamp_local(as_timestamp(alert["published"]))
+                    alert["published"] = timestamp_local(
+                        as_timestamp(alert["published"])
+                    )
                 except ValueError:
                     _LOGGER.error("Not possible to convert to local time")
             alarms = alerts[0]
             if len(alerts) > 1:
-#               more = {k+'_'+str(i+1): v for i, alert in enumerate(alerts[1:]) for k, v in alert.items()}
-#               alarms['more'] = len(more)
-#               alarms.update(more)
-                alarms['more'] = alerts[1:]
+                alarms["more"] = alerts[1:]
             self._attributes = alarms
             self._state = True
         else:
