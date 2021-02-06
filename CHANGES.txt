@@ -5,4 +5,4 @@ v0.1.1, 2021-02-03 -- 'Old school' (yaml) component (fix docs).
 v0.1.2, 2021-02-03 -- 'Old school' (yaml) component (beta).
 v0.1.3, 2021-02-03 -- (NOT RELEASED).
 v2021.1.0, 2021-02-03 -- 'Old school' (yaml) component.
-v2021.1.1, 2021-02-03 -- TENTATIVE
+v2021.1.1, 2021-02-03 -- 'Old school' (yaml) component (with muiti-alarm).
