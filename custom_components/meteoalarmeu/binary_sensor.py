@@ -113,7 +113,7 @@ class MeteoAlarmBinarySensor(BinarySensorEntity):
         """Update device state."""
         try:
             msgs = self._api.alerts()
-            alert = [m for m in msgs if m["awareness_type"] in self._awareness_types]
+            alerts = [m for m in msgs if m["awareness_type"] in self._awareness_types]
         except (KeyError, MeteoAlarmException):
             _LOGGER.error("Bad response from meteoalarm.eu")
             self._available = False
@@ -121,17 +121,19 @@ class MeteoAlarmBinarySensor(BinarySensorEntity):
         if not self._available:
             _LOGGER.info("meteoalarm.eu server is now OK")
         self._available = True
-        if alert:
-            # take just the first alert (the others will came after!)
-            alarm = alert[0]
-            try:
-                # change to local date/time (drop the seconds)
-                alarm["from"] = timestamp_local(as_timestamp(alarm["from"]))[:-3]
-                alarm["until"] = timestamp_local(as_timestamp(alarm["until"]))[:-3]
-                alarm["published"] = timestamp_local(as_timestamp(alarm["published"]))
-            except ValueError:
-                _LOGGER.error("Not possible to convert to local time")
-            self._attributes = alarm
+        if alerts:
+            for alert in alerts:
+                try:
+                    # change to local date/time (drop the seconds)
+                    alert["from"] = timestamp_local(as_timestamp(alert["from"]))[:-3]
+                    alert["until"] = timestamp_local(as_timestamp(alert["until"]))[:-3]
+                    alert["published"] = timestamp_local(as_timestamp(alert["published"]))
+                except ValueError:
+                    _LOGGER.error("Not possible to convert to local time")
+            alarms = {}
+            for i, alert in alerts:
+                alarms[str(i)] = alert
+            self._attributes = alarms
             self._state = True
         else:
             self._attributes = {}
