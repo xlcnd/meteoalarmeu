@@ -63,8 +63,8 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
         _LOGGER.error("Wrong country code or region name")
         return
 
-    _LOGGER.info(
-        f"A binary_sensor was created for country {country} and region {region}"
+    _LOGGER.debug(
+        "A binary_sensor was created for country %s and region %s", country, region,
     )
     add_entities([MeteoAlarmBinarySensor(api, name, awareness_types)], True)
 
