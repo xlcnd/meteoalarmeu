@@ -64,9 +64,7 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
         return
 
     _LOGGER.info(
-        "A binary_sensor was created for country {} and region {}".format(
-            country, region
-        )
+        f"A binary_sensor was created for country {country} and region {region}"
     )
     add_entities([MeteoAlarmBinarySensor(api, name, awareness_types)], True)
 

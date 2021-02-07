@@ -4,11 +4,13 @@
 [![GitHub download zip](https://img.shields.io/badge/download-zip-blue?style=for-the-badge)][1]
 
 
-> :heavy_exclamation_mark: **DISCLAIMER**: This is an open source project and doesn't have 
-> any connection with [meteoalarm.eu](https://www.meteoalarm.eu/).
-
 A `custom_component` for [Home-Assistant](https://www.home-assistant.io/) that implements a `binary_sensor`
 for the existence of weather alerts for your (Country, Region) on [meteoalarm.eu](https://www.meteoalarm.eu/).
+
+
+> :heavy_exclamation_mark: *DISCLAIMER: This is an open source project and doesn't have 
+> any connection with [meteoalarm.eu](https://www.meteoalarm.eu/)*.
+
 
 You will get a `binary_sensor.meteoalarmeu` identity that is `on` when there are alerts for your region and
 with attributes useful for automations.
