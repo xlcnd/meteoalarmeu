@@ -15,7 +15,7 @@ for the existence of weather alerts for your (Country, Region) on [meteoalarm.eu
 You will get a `binary_sensor.meteoalarmeu` identity that is `on` when there are alerts for your region and
 with attributes useful for automations.
 
-> :warning:  **BEFORE install** read [this][5].
+> :warning:  *BEFORE install* read [this][5].
 
 
 **How to install?**
