@@ -21,10 +21,6 @@ with attributes useful for automations.
 
 > :warning:  *BEFORE install read [this][5]*.
 
-If you have [HACS][4], use the normal procedure to install a new integration (*meteoalarmeu*) (**pending approval**!)
-and see point 3 below.
-
-To do it manually:
 
 1. Download [this][1] file and unzip it.
 
