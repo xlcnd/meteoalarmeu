@@ -8,14 +8,14 @@ A `custom_component` for [Home-Assistant](https://www.home-assistant.io/) that i
 for the existence of weather alerts for your (Country, Region) on [meteoalarm.eu](https://www.meteoalarm.eu/).
 
 
-> :heavy_exclamation_mark: *DISCLAIMER: This is an open source project and doesn't have 
+> :warning: *DISCLAIMER: This is an open source project and doesn't have 
 > any connection with [meteoalarm.eu](https://www.meteoalarm.eu/)*.
 
 
 You will get a `binary_sensor.meteoalarmeu` identity that is `on` when there are alerts for your region and
 with attributes useful for automations.
 
-> :warning:  *BEFORE install* read [this][5].
+> :warning:  *BEFORE install read [this][5]*.
 
 
 **How to install?**
