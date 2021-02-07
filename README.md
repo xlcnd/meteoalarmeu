@@ -19,7 +19,7 @@ with attributes useful for automations.
 
 **How to install?**
 
-> :warning:  *BEFORE install read [this][5]*.
+> :warning: *Before install read [this][5]*.
 
 
 1. Download [this][1] file and unzip it.
