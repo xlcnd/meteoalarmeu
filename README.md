@@ -8,7 +8,7 @@ A `custom_component` for [Home-Assistant](https://www.home-assistant.io/) that i
 for the existence of weather alerts for your (Country, Region) on [meteoalarm.eu](https://www.meteoalarm.eu/).
 
 
-> :warning: *DISCLAIMER: This is an open source project and doesn't have 
+> *DISCLAIMER: This is an open source project and doesn't have 
 > any connection with [meteoalarm.eu](https://www.meteoalarm.eu/)*.
 
 
@@ -19,7 +19,7 @@ with attributes useful for automations.
 
 **How to install?**
 
-> :warning: *Before install read [this][5]*.
+> *Before install read [this][5]*.
 
 
 1. Download [this][1] file and unzip it.
