@@ -21,7 +21,7 @@ with attributes useful for automations.
 
 > *Before install read [this][5]*.
 
-If you have [HACS][4], use the normal procedure to install a new integration (*meteoalarmeu*) (**pending approval**!)
+If you have [HACS][4] (**pending approval**!), use the normal procedure to install a new integration (*meteoalarmeu*) 
 and see point 3 below.
 
 To do it manually:
