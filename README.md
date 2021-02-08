@@ -122,10 +122,10 @@ Yellow
   unusual, but be attentive if you intend to practice activities exposed to meteorological risks.
   Keep informed about the expected meteorological conditions and do not take any avoidable risk.
 
-Green
+Green (empty alert)
   No particular awareness of the weather is required.
 
-White
+White (error MeteoAlarmMissingInfo)
   Missing, insufficient, outdated or suspicious data.
 
 ```
