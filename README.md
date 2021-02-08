@@ -8,7 +8,7 @@ A `custom_component` for [Home-Assistant](https://www.home-assistant.io/) that i
 for the existence of weather alerts for your (Country, Region) on [meteoalarm.eu](https://www.meteoalarm.eu/).
 
 
-> *DISCLAIMER: This is an open source project and doesn't have 
+> *DISCLAIMER: This is an open source project and doesn't have
 > any connection with [meteoalarm.eu](https://www.meteoalarm.eu/)*.
 
 
@@ -75,7 +75,7 @@ automation:
       message: >
         {{ state_attr('binary_sensor.meteoalarmeu', 'message') }}
 
-        Effective from {{ state_attr('binary_sensor.meteoalarmeu', 'from') }} until {{ state_attr('binary_sensor.meteoalarmeu', 'until') }}
+        Effective from **{{ state_attr('binary_sensor.meteoalarmeu', 'from') }}** until **{{ state_attr('binary_sensor.meteoalarmeu', 'until') }}**
       notification_id: "meteoalarm-{{ state_attr('binary_sensor.meteoalarmeu', 'alert_id') }}"
 
 ```
