@@ -42,7 +42,7 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
         vol.Required(CONF_REGION): cv.string,
         vol.Optional(CONF_NAME, default=DEFAULT_NAME): cv.string,
         vol.Optional(CONF_AWARENESS_TYPES, default=DEFAULT_AWARENESS_TYPES): vol.All(
-            cv.ensure_list, [vol.In(DEFAULT_AWARENESS_TYPES)]
+            cv.ensure_list, [cv.string]
         ),
     },
 )
