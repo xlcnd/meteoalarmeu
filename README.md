@@ -76,7 +76,7 @@ automation:
         {{ state_attr('binary_sensor.meteoalarmeu', 'awareness_type') }} ({{ state_attr('binary_sensor.meteoalarmeu', 'awareness_level') }})
       message: >
         {{ state_attr('binary_sensor.meteoalarmeu', 'message') }}
-        \n\n
+        
         Effective from **{{ state_attr('binary_sensor.meteoalarmeu', 'from') }}** until **{{ state_attr('binary_sensor.meteoalarmeu', 'until') }}**
       notification_id: "meteoalarm-{{ state_attr('binary_sensor.meteoalarmeu', 'alert_id') }}"
 
