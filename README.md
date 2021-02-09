@@ -162,7 +162,7 @@ As you can see, the **name** of the sensor can be changed too.
 If by any reason the server becames unavailable or sends an error status (and this happens a lot with meteoalarm.eu!)
 the **sensor becomes unavailable too**, if in the next update the server is ok, **it becomes available again**.
 
-[1]: https://github.com/xlcnd/meteoalarmeu/archive/v2021.2.3.zip
+[1]: https://github.com/xlcnd/meteoalarmeu/archive/v2021.2.4.zip
 [2]: https://github.com/xlcnd/meteoalarmeu/issues?q=is%3Aissue+is%3Aopen+is%3Abug
 [3]: https://github.com/xlcnd/meteoalarmeu/releases
 [4]: https://hacs.xyz/
