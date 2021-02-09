@@ -10,4 +10,4 @@ v2021.1.2, 2021-02-06 -- 'Old school' (yaml) component (extra alerts as list).
 v2021.1.3, 2021-02-06 -- (NOT RELEASED).
 v2021.2.0, 2021-02-06 -- 'Old school' (yaml) component (extra alerts as flat dict).
 v2021.2.1, 2021-02-08 -- 'Old school' (yaml) component (small improvements).
-v2021.2.2, 2021-02-08 -- 'Old school' (yaml) component (fix issue #4)
+v2021.2.2, 2021-02-09 -- 'Old school' (yaml) component (fix issue #4)
