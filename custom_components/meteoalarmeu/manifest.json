@@ -4,7 +4,7 @@
   "name": "Weather Alerts from meteoalarm.eu",
   "documentation": "https://github.com/xlcnd/meteoalarmeu",
   "issue_tracker": "https://github.com/xlcnd/meteoalarmeu/issues",
-  "requirements": ["meteoalarm-rssapi==0.2.3"],
+  "requirements": ["meteoalarm-rssapi==0.2.4"],
   "dependencies": [],
   "codeowners": ["@xlcnd"]
 }
