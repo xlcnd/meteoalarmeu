@@ -1,3 +1,3 @@
 """The meteoalarmue custom_component."""
 
-__version__ = "2021.2.5"
+__version__ = "2021.3.0"
