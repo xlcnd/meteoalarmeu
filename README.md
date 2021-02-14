@@ -38,14 +38,17 @@ binary_sensor:
 - platform: meteoalarmeu
   country: 'DE'
   region: 'Kreis Ahrweiler'
+  language: 'de'
 ```
 
-**NOTE**: You should adapt the country and region to your case!
+**NOTE**: You should adapt the country, region and language to your case!
 
 You need to know your 2-letter iso country code (e.g. DE) and the **exact name** of your region
 **as reported by your national agency to meteoalarm.eu** (e.g. Kreis Ahrweiler).
 For that, please check the page for your country in [meteoalarm.eu](https://www.meteoalarm.eu/)
 or search [here][6].
+
+You need to know, too, the [ISO 639-1 code][7] for the message's language (usually the languages available for each country are english ('en') and the local language (e.g. 'de')). The indication of **language is optional**, and if no language is specified the message will come unparsed and in all available languages. 
 
 
 You can do a lot with automations... an useful one would be:
@@ -169,3 +172,4 @@ the **sensor becomes unavailable too**, if in the next update the server is ok, 
 [4]: https://hacs.xyz/
 [5]: https://github.com/xlcnd/meteoalarmeu/issues/3
 [6]: https://github.com/xlcnd/meteoalarm-rssapi/blob/main/meteoalarm_rssapi/_resources.py
+[7]: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
