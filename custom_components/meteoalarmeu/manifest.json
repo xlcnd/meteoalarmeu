@@ -1,5 +1,5 @@
 {
-  "version": "2021.3.0",
+  "version": "2021.3.1",
   "domain": "meteoalarmeu",
   "name": "Weather Alerts from meteoalarm.eu",
   "documentation": "https://github.com/xlcnd/meteoalarmeu",
