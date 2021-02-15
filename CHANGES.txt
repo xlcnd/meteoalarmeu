@@ -14,4 +14,4 @@ v2021.2.2, 2021-02-09 -- 'Old school' (yaml) component (fix issue #4).
 v2021.2.3, 2021-02-09 -- 'Old school' (yaml) component (close #4).
 v2021.2.4, 2021-02-11 -- 'Old school' (yaml) component (new 'alert_id' algorithm).
 v2021.2.5, 2021-02-11 -- (NOT RELEASED).
-v2021.3.0, 2021-02-11 -- 'Old school' (yaml) component (add 'language' selection).
+v2021.3.0, 2021-02-15 -- 'Old school' (yaml) component (add 'language' selection).
