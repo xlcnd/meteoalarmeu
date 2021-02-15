@@ -6,7 +6,7 @@
 
 
 A `custom_component` for [Home-Assistant](https://www.home-assistant.io/) that implements a `binary_sensor`
-for the existence of weather alerts for your (Country, Region) on [meteoalarm.eu](https://www.meteoalarm.eu/).
+for the existence of weather alerts for your (Country, Region) on [meteoalarm.eu][9].
 
 
 > *DISCLAIMER: This is an open source project and doesn't have
@@ -167,7 +167,7 @@ As you can see, the **name** of the sensor can be changed too.
 If by any reason the server becames unavailable or sends an error status (and this happens a lot with meteoalarm.eu!)
 the **sensor becomes unavailable too**, if in the next update the server is ok, **it becomes available again**.
 
-This component uses meteoalarm.eu' **rss feeds** that are available for **all** [(active) countries][8].
+This component uses [meteoalarm.eu][9]'s **rss feeds** that are available for **all** [(active) countries][8].
 
 [1]: https://github.com/xlcnd/meteoalarmeu/archive/v2021.3.1.zip
 [2]: https://github.com/xlcnd/meteoalarmeu/issues?q=is%3Aissue+is%3Aopen+is%3Abug
@@ -177,3 +177,4 @@ This component uses meteoalarm.eu' **rss feeds** that are available for **all** 
 [6]: https://github.com/xlcnd/meteoalarm-rssapi/blob/main/meteoalarm_rssapi/_resources.py
 [7]: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
 [8]: https://github.com/xlcnd/meteoalarmeu/issues/2
+[9]: https://www.meteoalarm.eu
