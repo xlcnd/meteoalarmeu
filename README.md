@@ -149,6 +149,7 @@ binary_sensor:
   name: 'meteoalarmeu_ahrweiler'
   country: 'DE'
   region: 'Kreis Ahrweiler'
+  language: 'de'
   awareness_types:
   - Extreme high temperature
   - Extreme low temperature
@@ -166,6 +167,8 @@ As you can see, the **name** of the sensor can be changed too.
 If by any reason the server becames unavailable or sends an error status (and this happens a lot with meteoalarm.eu!)
 the **sensor becomes unavailable too**, if in the next update the server is ok, **it becomes available again**.
 
+This component uses the **rss api** that is available for [all (active) countries][8].
+
 [1]: https://github.com/xlcnd/meteoalarmeu/archive/v2021.3.0.zip
 [2]: https://github.com/xlcnd/meteoalarmeu/issues?q=is%3Aissue+is%3Aopen+is%3Abug
 [3]: https://github.com/xlcnd/meteoalarmeu/releases
@@ -173,3 +176,4 @@ the **sensor becomes unavailable too**, if in the next update the server is ok, 
 [5]: https://github.com/xlcnd/meteoalarmeu/issues/3
 [6]: https://github.com/xlcnd/meteoalarm-rssapi/blob/main/meteoalarm_rssapi/_resources.py
 [7]: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
+[8]: https://github.com/xlcnd/meteoalarmeu/issues/2
