@@ -10,7 +10,7 @@ for the existence of weather alerts for your (Country, Region) on [meteoalarm.eu
 
 
 > *DISCLAIMER: This is an open source project and doesn't have
-> any connection with [meteoalarm.eu](https://www.meteoalarm.eu/)*.
+> any affiliation with [meteoalarm.eu](https://www.meteoalarm.eu/)*.
 
 
 You will get a `binary_sensor.meteoalarmeu` identity that is `on` when there are alerts for your region and
