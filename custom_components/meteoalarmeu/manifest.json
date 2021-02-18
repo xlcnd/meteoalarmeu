@@ -1,4 +1,5 @@
 {
+  "version": "2021.4.1",
   "domain": "meteoalarmeu",
   "name": "meteoalarmeu",
   "config_flow": true,
