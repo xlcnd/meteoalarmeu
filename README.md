@@ -167,7 +167,7 @@ the **sensor becomes unavailable too**, if in the next update the server is ok, 
 
 This component uses [meteoalarm.eu][9]'s **rss feeds** that are available for **all** [(active) countries][8].
 
-[1]: https://github.com/xlcnd/meteoalarmeu/archive/v2021.3.1.zip
+[1]: https://github.com/xlcnd/meteoalarmeu/archive/v2021.4.0.zip
 [2]: https://github.com/xlcnd/meteoalarmeu/issues?q=is%3Aissue+is%3Aopen+is%3Abug
 [3]: https://github.com/xlcnd/meteoalarmeu/releases
 [4]: https://hacs.xyz/
