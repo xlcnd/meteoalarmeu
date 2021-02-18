@@ -46,7 +46,7 @@ binary_sensor:
 You need to know your 2-letter iso country code (e.g. DE) and the **exact name** of your region
 **as reported by your national agency to meteoalarm.eu** (e.g. Kreis Ahrweiler).
 For that, please check the page for your country in [meteoalarm.eu](https://www.meteoalarm.eu/)
-or search [here][6].
+or search [here][6] (just the **exact name of the region** without the code).
 
 You need to know, too, the [ISO 639-1 code][7] for the message's language (usually the languages available for each country are english ('en') and the local language (e.g. 'de')). The indication of **language is optional**, and if no language is specified the message will come unparsed and in all available languages. 
 
@@ -65,26 +65,24 @@ automation:
     entity_id: binary_sensor.meteoalarmeu
     state: 'on'
   action:
-  - service: notify.notify
-    data_template:
-      title: >
-        {{ state_attr('binary_sensor.meteoalarmeu', 'awareness_type') }} ({{ state_attr('binary_sensor.meteoalarmeu', 'awareness_level') }})
-      message: >
-        {{ state_attr('binary_sensor.meteoalarmeu', 'message') }}
+  - repeat:
+      count: "{{ state_attr('binary_sensor.meteoalarmeu', 'alerts') | int }}"
+      sequence:
+      - service: persistent_notification.create
+        data:
+          title: >
+            {% set ext = "" if repeat.first else "_" + (repeat.index-1)|string %}
+            {{ state_attr('binary_sensor.meteoalarmeu', 'awareness_type' + ext) }} ({{ state_attr('binary_sensor.meteoalarmeu', 'awareness_level' + ext) }})
+          message: >
+            {% set ext = "" if repeat.first else "_" + (repeat.index-1)|string %}
+            {{ state_attr('binary_sensor.meteoalarmeu', 'message' + ext) }}
 
-        Effective from {{ state_attr('binary_sensor.meteoalarmeu', 'from') }} until {{ state_attr('binary_sensor.meteoalarmeu', 'until') }}
-  - service: persistent_notification.create
-    data:
-      title: >
-        {{ state_attr('binary_sensor.meteoalarmeu', 'awareness_type') }} ({{ state_attr('binary_sensor.meteoalarmeu', 'awareness_level') }})
-      message: >
-        {{ state_attr('binary_sensor.meteoalarmeu', 'message') }}
-        
-        Effective from **{{ state_attr('binary_sensor.meteoalarmeu', 'from') }}** until **{{ state_attr('binary_sensor.meteoalarmeu', 'until') }}**
-      notification_id: "meteoalarm-{{ state_attr('binary_sensor.meteoalarmeu', 'alert_id') }}"
+            Effective from **{{ state_attr('binary_sensor.meteoalarmeu', 'from' + ext) }}** until **{{ state_attr('binary_sensor.meteoalarmeu', 'until' + ext) }}**
+          notification_id: >
+            {% set ext = "" if repeat.first else "_" + (repeat.index-1)|string %}
+            meteoalarm-{{ state_attr('binary_sensor.meteoalarmeu', 'alert_id' + ext) }}
 
 ```
-
 
 
 For the attribute `awareness_type` the possible values are:
