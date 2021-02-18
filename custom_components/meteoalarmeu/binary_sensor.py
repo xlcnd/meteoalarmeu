@@ -45,6 +45,7 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
     language = config_entry.data.get(CONF_LANGUAGE)
     name = config_entry.data.get(CONF_NAME)
     atypes = config_entry.data.get(CONF_AWARENESS_TYPES, DEFAULT_AWARENESS_TYPES)
+    # TODO evaluate multi sensor? id = slugify(f"{country}{region}{language}")
 
     try:
         api = MeteoAlarm(country, region, language)
