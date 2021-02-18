@@ -33,7 +33,7 @@ To do it manually:
 
 2. Copy the folder `meteoalarmeu` to the folder `custom_components` on your Home-Assistant folder.
 
-3. Restart Home-Assistent.
+3. Restart Home-Assistant.
 
 
 To continue the installation, you need to know the 2-letter iso code of your country (e.g. DE) and the **exact name** of your region
