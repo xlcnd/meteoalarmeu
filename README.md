@@ -17,7 +17,7 @@ You will get a `binary_sensor.meteoalarmeu` identity that is `on` when there are
 with attributes useful for automations.
 
 > WARNING: If you are updating from a previous version you should delete any configuration text related 
-> with this integration from your `configuration.yaml`, since `yaml configuration` is now NOT supported.
+> with this integration from your `configuration.yaml`, since `yaml configuration` is now **NOT supported**.
 
 
 **How to install?**
