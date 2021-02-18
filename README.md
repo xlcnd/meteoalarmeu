@@ -16,6 +16,8 @@ for the existence of weather alerts for your (Country, Region) on [meteoalarm.eu
 You will get a `binary_sensor.meteoalarmeu` identity that is `on` when there are alerts for your region and
 with attributes useful for automations.
 
+> WARNING: If you are updating from a previous version you should delete any configuration text related 
+> with this integration from your `configuration.yaml`, since `yaml configuration` is now NOT supported.
 
 
 **How to install?**
@@ -31,24 +33,31 @@ To do it manually:
 
 2. Copy the folder `meteoalarmeu` to the folder `custom_components` on your Home-Assistant folder.
 
-3. Write in your `configuration.yaml` file, the following:
+3. Restart Home-Assistent.
 
-```
-binary_sensor:
-- platform: meteoalarmeu
-  country: 'DE'
-  region: 'Kreis Ahrweiler'
-  language: 'de'
-```
 
-**NOTE**: You should adapt the country, region and language to your case!
-
-You need to know your 2-letter iso country code (e.g. DE) and the **exact name** of your region
+To continue the installation, you need to know the 2-letter iso code of your country (e.g. DE) and the **exact name** of your region
 **as reported by your national agency to meteoalarm.eu** (e.g. Kreis Ahrweiler).
 For that, please check the page for your country in [meteoalarm.eu](https://www.meteoalarm.eu/)
 or search [here][6] (just the **exact name of the region** without the code).
 
-You need to know, too, the [ISO 639-1 code][7] for the message's language (usually the languages available for each country are english ('en') and the local language (e.g. 'de')). The indication of **language is optional**, and if no language is specified the message will come unparsed and in all available languages. 
+You need to know, too, the [ISO 639-1 code][7] for the message's language (usually the languages available for each country are english ('en') and the local language (e.g. 'de')). The indication of **language is optional**, and if no language is specified the *message will come unparsed and in all available languages*. 
+
+
+Now do the following steps:
+
+```
+1. go to Configuration > Integrations 
+2. then click '+ ADD INTEGRATION' 
+3. choose 'meteoalarmeu'
+4. on Country choose (e.g. DE) (*adapt to your case!*)
+5. on Region write (e.g. Kreis Ahrweiler) (*adapt to your case!*)
+6. on Language choose (e.g. 'de') (*adapt to your case!*)
+7. left the rest as it is OR unselect some events
+8. click 'Submit'
+```
+
+If all goes well (be carefull with step 5), now you have a new sensor `binary_sensor.meteoalarmeu`. You should wait for some minutes (up until 30m!) for HA to start to update the sensor. Meanwhile, add your automations for the sensor and **don't forget** to reload them.
 
 
 You can do a lot with automations... an useful one would be:
@@ -85,7 +94,7 @@ automation:
 ```
 
 
-For the attribute `awareness_type` the possible values are:
+For the attribute `awareness_type` (**events**) the possible values are:
 
 ```
  Avalanches
@@ -103,7 +112,7 @@ For the attribute `awareness_type` the possible values are:
 ```
 
 
-For the attribute `awareness_level` the possibilities are (with the meaning following):
+For the attribute `awareness_level` (**severity**) the possibilities are (with the meaning following):
 
 
 ```
@@ -134,40 +143,12 @@ White (error MeteoAlarmMissingInfo)
 ```
 
 
-### More advanced stuff
-
-These alarms could get very noisy (with date/time revisions every 30 minutes as
-best forecasts are available)! By default you subscribe to **all** type of events.
-So is best to limit the type of events that you subscribe. For that, you can use
-the `awareness_types` list. As an example:
-
-```
-binary_sensor:
-- platform: meteoalarmeu
-  name: 'meteoalarmeu_ahrweiler'
-  country: 'DE'
-  region: 'Kreis Ahrweiler'
-  language: 'de'
-  awareness_types:
-  - Extreme high temperature
-  - Extreme low temperature
-  - Flood
-  - Fog
-  - Forestfire
-  - Thunderstorms
-  - Wind
-
-```
-
-As you can see, the **name** of the sensor can be changed too.
-
-
 If by any reason the server becames unavailable or sends an error status (and this happens a lot with meteoalarm.eu!)
 the **sensor becomes unavailable too**, if in the next update the server is ok, **it becomes available again**.
 
 This component uses [meteoalarm.eu][9]'s **rss feeds** that are available for **all** [(active) countries][8].
 
-[1]: https://github.com/xlcnd/meteoalarmeu/archive/v2021.4.0.zip
+[1]: https://github.com/xlcnd/meteoalarmeu/archive/v2021.3.1.zip
 [2]: https://github.com/xlcnd/meteoalarmeu/issues?q=is%3Aissue+is%3Aopen+is%3Abug
 [3]: https://github.com/xlcnd/meteoalarmeu/releases
 [4]: https://hacs.xyz/
