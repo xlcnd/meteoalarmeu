@@ -7,6 +7,8 @@ from meteoalarm_rssapi import MeteoAlarm
 
 from .const import DOMAIN
 
+__version__ = "0.4.2"
+
 PLATFORMS = ["binary_sensor"]
 
 
