@@ -83,7 +83,7 @@ class MeteoAlarmBinarySensor(BinarySensorEntity):
     def __init__(self, api, name, awareness_types):
         """Initialize the MeteoAlarmEU binary sensor."""
         self._name = name
-        self._attributes = {}
+        self._attributes = {"alerts": 0}
         self._awareness_types = awareness_types
         self._state = None
         self._api = api
@@ -127,6 +127,7 @@ class MeteoAlarmBinarySensor(BinarySensorEntity):
         if not self._available:
             _LOGGER.info("meteoalarm.eu server is now OK")
         self._available = True
+        self._state = False
         if alerts:
             for alert in alerts:
                 try:
