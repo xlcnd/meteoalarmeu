@@ -50,9 +50,9 @@ Now do the following steps:
 1. go to Configuration > Integrations 
 2. then click '+ ADD INTEGRATION' 
 3. choose 'meteoalarmeu'
-4. on Country choose (e.g. DE) (*adapt to your case!*)
-5. on Region write (e.g. Kreis Ahrweiler) (*adapt to your case!*)
-6. on Language choose (e.g. 'de') (*adapt to your case!*)
+4. on Country choose (e.g. DE) (adapt to your case!)
+5. on Region write (e.g. Kreis Ahrweiler) (adapt to your case!)
+6. on Language choose (e.g. 'de') (adapt to your case!)
 7. left the rest as it is OR unselect some events
 8. click 'Submit'
 ```
