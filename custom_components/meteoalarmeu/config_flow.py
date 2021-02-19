@@ -5,7 +5,7 @@ import homeassistant.helpers.config_validation as cv
 import voluptuous as vol
 from homeassistant import config_entries, core, exceptions
 from homeassistant.const import CONF_NAME
-from homeassistant.util import slugify
+#from homeassistant.util import slugify
 from meteoalarm_rssapi import (
     MeteoAlarmUnavailableLanguageError,
     MeteoAlarmUnrecognizedCountryError,
@@ -52,7 +52,7 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                 info = await self.validate_input(self.hass, user_input)
 
                 # Set 'unique_id' and abort flow if already configured
-                # TODO evaluate multi sensor? id = slugify(f"{country}{region}{language}")
+                # TODO evaluate multi sensor? id = slugify(f"{country} {region} {language}")
                 await self.async_set_unique_id(self._name)
                 self._abort_if_unique_id_configured()
 
