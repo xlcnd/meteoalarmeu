@@ -95,7 +95,6 @@ automation:
 together with:
 
 ```
-automation:
 - alias: Update weather warnings on HA start
   trigger:
   - platform: homeassistant
@@ -103,6 +102,23 @@ automation:
   action:
   - service: homeassistant.update_entity
     entity_id: binary_sensor.meteoalarmeu
+
+
+- alias: Dismiss obsolete PNs about weather warnings
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.meteoalarmeu
+    attribute: message_id
+  action:
+  - delay: '00:00:30'
+  - service: persistent_notification.dismiss
+    data_template:
+      notification_id: >
+        {%- for item in states.persistent_notification %}
+        {%- if item |regex_findall_index("until \*\*(.*?)\*\*")|as_timestamp() < as_timestamp(now()) -%}
+        {{ item.entity_id |replace('persistent_notification.', '') }}{%- if not loop.last %}, {% endif -%}
+        {%- endif -%}
+        {%- endfor -%}
 
 ```
 
