@@ -90,6 +90,19 @@ automation:
           notification_id: >
             {% set ext = "" if repeat.first else "_" + (repeat.index-1)|string %}
             meteoalarm-{{ state_attr('binary_sensor.meteoalarmeu', 'alert_id' + ext) }}
+```
+
+together with:
+
+```
+automation:
+- alias: Update weather warnings on HA start
+  trigger:
+  - platform: homeassistant
+    event: start
+  action:
+  - service: homeassistant.update_entity
+    entity_id: binary_sensor.meteoalarmeu
 
 ```
 
