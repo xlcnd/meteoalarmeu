@@ -69,6 +69,8 @@ automation:
   - platform: state
     entity_id: binary_sensor.meteoalarmeu
     attribute: message_id
+  - platform: homeassistant
+    event: start
   condition:
   - condition: state
     entity_id: binary_sensor.meteoalarmeu
