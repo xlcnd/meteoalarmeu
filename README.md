@@ -54,7 +54,7 @@ Now do the following steps:
 5. on Region write (e.g. Kreis Ahrweiler) (adapt to your case!)
 6. on Language choose (e.g. 'de') (adapt to your case!)
 7. left the rest as it is OR unselect some events
-8. click 'Submit'
+8. click 'SUBMIT'
 ```
 
 If all goes well (be carefull with step 5), now you have a new sensor `binary_sensor.meteoalarmeu`. You should wait for some minutes (up until 30m!) for HA to start to update the sensor. Meanwhile, add your automations for the sensor and **don't forget** to reload them.
