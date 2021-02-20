@@ -5,16 +5,18 @@ import homeassistant.helpers.config_validation as cv
 import voluptuous as vol
 from homeassistant import config_entries, core, exceptions
 from homeassistant.const import CONF_NAME
-from meteoalarm_rssapi import (
+
+from .client import AWARENESS_TYPES as AWARENESS_TYPES_API
+from .client import COUNTRIES as COUNTRIES_API
+from .client import LANGUAGES as LANGUAGES_API
+from .client import (
     MeteoAlarmUnavailableLanguageError,
     MeteoAlarmUnrecognizedCountryError,
     MeteoAlarmUnrecognizedRegionError,
     awareness_types,
+    get_languages,
+    get_regions,
 )
-from meteoalarm_rssapi import countries_list as countries
-from meteoalarm_rssapi import get_languages, get_regions
-from meteoalarm_rssapi import languages_list as languages
-
 from .const import CONF_AWARENESS_TYPES  # pylint:disable=unused-import
 from .const import (
     CONF_COUNTRY,
@@ -25,10 +27,10 @@ from .const import (
     DOMAIN,
 )
 
-COUNTRIES = countries
+COUNTRIES = COUNTRIES_API
 LANGUAGES = [DEFAULT_LANGUAGE]
-LANGUAGES.extend(languages)
-DEFAULT_AWARENESS_TYPES = sorted(list(awareness_types))
+LANGUAGES.extend(LANGUAGES_API)
+DEFAULT_AWARENESS_TYPES = sorted(list(AWARENESS_TYPES_API))
 
 _LOGGER = logging.getLogger(__name__)
 

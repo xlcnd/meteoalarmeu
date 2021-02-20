@@ -10,14 +10,14 @@ from homeassistant.const import ATTR_ATTRIBUTION, CONF_NAME
 from homeassistant.helpers.entity import Entity
 from homeassistant.helpers.template import forgiving_as_timestamp as as_timestamp
 from homeassistant.helpers.template import timestamp_local
-from meteoalarm_rssapi import (
-    MeteoAlarm,
+
+from .client import AWARENESS_TYPES as AWARENESS_TYPES_API
+from .client import (
+    Client,
     MeteoAlarmException,
     MeteoAlarmUnavailableLanguageError,
     MeteoAlarmUnrecognizedRegionError,
-    awareness_types,
 )
-
 from .const import (
     ATTRIBUTION,
     CONF_AWARENESS_TYPES,
@@ -29,7 +29,7 @@ from .const import (
     SCAN_INTERVAL_MINUTES,
 )
 
-DEFAULT_AWARENESS_TYPES = list(awareness_types)
+DEFAULT_AWARENESS_TYPES = list(AWARENESS_TYPES_API)
 
 SCAN_INTERVAL = timedelta(minutes=SCAN_INTERVAL_MINUTES)
 
@@ -43,10 +43,12 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
     region = config_entry.data.get(CONF_REGION)
     language = config_entry.data.get(CONF_LANGUAGE)
     name = config_entry.data.get(CONF_NAME)
-    atypes = config_entry.data.get(CONF_AWARENESS_TYPES, DEFAULT_AWARENESS_TYPES)
+    awareness_types = config_entry.data.get(
+        CONF_AWARENESS_TYPES, DEFAULT_AWARENESS_TYPES
+    )
 
     try:
-        api = MeteoAlarm(country, region, language)
+        api = Client(country, region, language, awareness_types)
     except MeteoAlarmUnrecognizedRegionError:
         _LOGGER.error("Wrong region name (check 'meteoalarm.eu' for the EXACT name)")
     except MeteoAlarmUnavailableLanguageError:
@@ -57,7 +59,7 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
         _LOGGER.error("Wrong country code or region name")
         return
 
-    entities = [MeteoAlarmBinarySensor(api, name, atypes)]
+    entities = [MeteoAlarmBinarySensor(api, name)]
 
     if entities:
         async_add_entities(entities)
@@ -67,11 +69,10 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
 class MeteoAlarmBinarySensor(BinarySensorEntity):
     """Representation of a MeteoAlarmEU binary sensor."""
 
-    def __init__(self, api, name, awareness_types):
+    def __init__(self, api, name):
         """Initialize the MeteoAlarmEU binary sensor."""
         self._name = name
         self._attributes = {"alerts": 0}
-        self._awareness_types = awareness_types
         self._state = None
         self._api = api
         self._available = True
@@ -111,8 +112,7 @@ class MeteoAlarmBinarySensor(BinarySensorEntity):
     def update(self):
         """Update device state."""
         try:
-            msgs = self._api.alerts()
-            alerts = [m for m in msgs if m["awareness_type"] in self._awareness_types]
+            alerts = self._api.alerts()
         except (KeyError, MeteoAlarmException):
             _LOGGER.error("Bad response from meteoalarm.eu")
             self._available = False
