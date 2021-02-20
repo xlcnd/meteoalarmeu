@@ -20,7 +20,7 @@ with attributes useful for automations.
 > with this integration from your `configuration.yaml`, since `yaml configuration` is now **NOT supported**.
 
 
-**How to install?**
+**How to install?**<a name="install"></a>
 
 > *Before install read [this][5]*.
 
@@ -60,7 +60,7 @@ Now do the following steps:
 If all goes well (be carefull with step 5), now you have a new sensor `binary_sensor.meteoalarmeu`. You should wait for some minutes (up until 30m!) for HA to start to update the sensor. Meanwhile, add your automations for the sensor and **don't forget** to reload them.
 
 
-You can do a lot with automations... some useful ones would be:
+You can do a lot with automations... some useful ones would be:<a name="automations"></a>
 
 ```
 automation:
