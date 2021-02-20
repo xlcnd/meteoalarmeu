@@ -10,7 +10,6 @@ from homeassistant.const import ATTR_ATTRIBUTION, CONF_NAME
 from homeassistant.helpers.entity import Entity
 from homeassistant.helpers.template import forgiving_as_timestamp as as_timestamp
 from homeassistant.helpers.template import timestamp_local
-#from homeassistant.util import slugify
 from meteoalarm_rssapi import (
     MeteoAlarm,
     MeteoAlarmException,
@@ -45,7 +44,6 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
     language = config_entry.data.get(CONF_LANGUAGE)
     name = config_entry.data.get(CONF_NAME)
     atypes = config_entry.data.get(CONF_AWARENESS_TYPES, DEFAULT_AWARENESS_TYPES)
-    # TODO evaluate multi sensor? id = slugify(f"{country} {region} {language}")
 
     try:
         api = MeteoAlarm(country, region, language)
@@ -73,7 +71,6 @@ class MeteoAlarmBinarySensor(BinarySensorEntity):
         """Initialize the MeteoAlarmEU binary sensor."""
         self._name = name
         self._attributes = {"alerts": 0}
-        #self._attributes = {}
         self._awareness_types = awareness_types
         self._state = None
         self._api = api
@@ -110,10 +107,6 @@ class MeteoAlarmBinarySensor(BinarySensorEntity):
     def available(self):
         """Return true if the device is available."""
         return self._available
-
-    # @property
-    # def meteoalarmbinarysensor_id(self):
-    #     return self._name.lower()
 
     def update(self):
         """Update device state."""
