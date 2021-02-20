@@ -11,7 +11,6 @@ from homeassistant.helpers.entity import Entity
 from homeassistant.helpers.template import forgiving_as_timestamp as as_timestamp
 from homeassistant.helpers.template import timestamp_local
 
-from .client import AWARENESS_TYPES as AWARENESS_TYPES_API
 from .client import (
     Client,
     MeteoAlarmException,
@@ -29,8 +28,6 @@ from .const import (
     SCAN_INTERVAL_MINUTES,
 )
 
-DEFAULT_AWARENESS_TYPES = list(AWARENESS_TYPES_API)
-
 SCAN_INTERVAL = timedelta(minutes=SCAN_INTERVAL_MINUTES)
 
 _LOGGER = logging.getLogger(__name__)
@@ -43,9 +40,7 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
     region = config_entry.data.get(CONF_REGION)
     language = config_entry.data.get(CONF_LANGUAGE)
     name = config_entry.data.get(CONF_NAME)
-    awareness_types = config_entry.data.get(
-        CONF_AWARENESS_TYPES, DEFAULT_AWARENESS_TYPES
-    )
+    awareness_types = config_entry.data.get(CONF_AWARENESS_TYPES)
 
     try:
         api = Client(country, region, language, awareness_types)
