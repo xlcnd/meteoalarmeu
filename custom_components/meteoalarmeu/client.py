@@ -20,7 +20,7 @@ class Client:
         self._country = country
         self._region = region
         self._language = language
-        self._awareness_types = awareness_types
+        self._awareness_types = awareness_types or AWARENESS_TYPES
         self._api = self._get_api()
 
     def update(self, country=None, region=None, language=None, awareness_types=None):
