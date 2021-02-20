@@ -103,7 +103,7 @@ automation:
 
 
 - alias: Dismiss obsolete PNs about weather warnings
-  mode: queued
+  mode: restart
   trigger:
   - platform: event
     event_type: persistent_notifications_updated
