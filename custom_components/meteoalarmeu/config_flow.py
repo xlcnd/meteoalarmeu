@@ -16,8 +16,8 @@ from .client import (
     get_languages,
     get_regions,
 )
-from .const import CONF_AWARENESS_TYPES  # pylint:disable=unused-import
 from .const import (
+    CONF_AWARENESS_TYPES,
     CONF_COUNTRY,
     CONF_LANGUAGE,
     CONF_REGION,
