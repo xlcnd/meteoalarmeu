@@ -2,7 +2,6 @@
 import asyncio
 
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.const import CONF_NAME
 from homeassistant.core import HomeAssistant
 from meteoalarm_rssapi import MeteoAlarm
 
@@ -11,7 +10,6 @@ from .const import (
     CONF_COUNTRY,
     CONF_REGION,
     CONF_LANGUAGE,
-    CONF_AWARENESS_TYPES,
 )
 
 __version__ = "0.4.2"
@@ -28,10 +26,7 @@ async def async_setup(hass: HomeAssistant, config: dict):
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
     """Set up meteoalarmeu from a config entry."""
     hass.data[DOMAIN][entry.entry_id] = MeteoAlarm(
-        entry.data[CONF_COUNTRY],
-        entry.data[CONF_REGION],
-        entry.data[CONF_LANGUAGE],
-#        entry.data[CONF_AWARENESS_TYPES],
+        entry.data[CONF_COUNTRY], entry.data[CONF_REGION], entry.data[CONF_LANGUAGE],
     )
 
     for component in PLATFORMS:
