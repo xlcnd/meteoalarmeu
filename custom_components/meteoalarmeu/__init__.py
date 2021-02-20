@@ -31,8 +31,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
         entry.data[CONF_COUNTRY],
         entry.data[CONF_REGION],
         entry.data[CONF_LANGUAGE],
-        entry.data[CONF_AWARENESS_TYPES],
-        entry.data[CONF_NAME],
+#        entry.data[CONF_AWARENESS_TYPES],
     )
 
     for component in PLATFORMS:
