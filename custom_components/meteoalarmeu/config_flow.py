@@ -13,7 +13,6 @@ from .client import (
     MeteoAlarmUnavailableLanguageError,
     MeteoAlarmUnrecognizedCountryError,
     MeteoAlarmUnrecognizedRegionError,
-    awareness_types,
     get_languages,
     get_regions,
 )
@@ -103,7 +102,7 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             raise MeteoAlarmUnavailableLanguageError
 
         for awt in data[CONF_AWARENESS_TYPES]:
-            if awt not in awareness_types:
+            if awt not in DEFAULT_AWARENESS_TYPES:
                 raise InvalidAwarenessType
 
         # Add 'name'

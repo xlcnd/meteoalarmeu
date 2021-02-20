@@ -1,5 +1,6 @@
 from meteoalarm_rssapi import (
     MeteoAlarm,
+    MeteoAlarmException,
     MeteoAlarmUnavailableLanguageError,
     MeteoAlarmUnrecognizedCountryError,
     MeteoAlarmUnrecognizedRegionError,
@@ -15,7 +16,7 @@ LANGUAGES = _languages_list
 
 
 class Client:
-    def __init__(self, country, region, language=None, awareness_types=awareness_types):
+    def __init__(self, country, region, language=None, awareness_types=AWARENESS_TYPES):
         self._country = country
         self._region = region
         self._language = language
