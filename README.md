@@ -103,17 +103,18 @@ automation:
 
 
 - alias: Dismiss obsolete PNs about weather warnings
+  mode: queued
   trigger:
-  - platform: state
-    entity_id: binary_sensor.meteoalarmeu
-    attribute: message_id
+  - platform: event
+    event_type: persistent_notifications_updated
   action:
-  - delay: '00:00:30'
   - service: persistent_notification.dismiss
     data_template:
       notification_id: >
-        {%- for item in states.persistent_notification if item |regex_findall_index("until \*\*(.*?)\*\*")|as_timestamp() < as_timestamp(now()) -%}
-        {{ item.entity_id |replace('persistent_notification.', '') }}{%- if not loop.last %}, {% endif -%}
+        {%- for item in states.persistent_notification if item |regex_search("until \*\*(.*?)\*\*") -%}
+          {%- if item  | regex_findall_index("until \*\*(.*?)\*\*") | as_timestamp() < as_timestamp(now()) -%}
+            {{ item.entity_id |replace('persistent_notification.', '') }}{%- if not loop.last %},{% endif -%}
+          {%- endif -%}
         {%- endfor -%}
 
 ```
