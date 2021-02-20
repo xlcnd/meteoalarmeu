@@ -16,6 +16,6 @@ A very useful set of automations were added to [documentation][1].
 
 
 
-[1]: https://github.com/xlcnd/meteoalarmeu/blob/main/README.md
+[1]: https://github.com/xlcnd/meteoalarmeu/blob/main/README.md#automations
 
 
