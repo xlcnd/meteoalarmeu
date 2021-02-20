@@ -60,10 +60,11 @@ Now do the following steps:
 If all goes well (be carefull with step 5), now you have a new sensor `binary_sensor.meteoalarmeu`. You should wait for some minutes (up until 30m!) for HA to start to update the sensor. Meanwhile, add your automations for the sensor and **don't forget** to reload them.
 
 
-You can do a lot with automations... an useful one would be:
+You can do a lot with automations... some useful ones would be:
 
 ```
 automation:
+
 - alias: Alert me about weather warnings
   trigger:
   - platform: state
@@ -90,11 +91,8 @@ automation:
           notification_id: >
             {% set ext = "" if repeat.first else "_" + (repeat.index-1)|string %}
             meteoalarm-{{ state_attr('binary_sensor.meteoalarmeu', 'alert_id' + ext) }}
-```
 
-together with:
 
-```
 - alias: Update weather warnings on HA start
   trigger:
   - platform: homeassistant
@@ -114,10 +112,8 @@ together with:
   - service: persistent_notification.dismiss
     data_template:
       notification_id: >
-        {%- for item in states.persistent_notification %}
-        {%- if item |regex_findall_index("until \*\*(.*?)\*\*")|as_timestamp() < as_timestamp(now()) -%}
+        {%- for item in states.persistent_notification if item |regex_findall_index("until \*\*(.*?)\*\*")|as_timestamp() < as_timestamp(now()) -%}
         {{ item.entity_id |replace('persistent_notification.', '') }}{%- if not loop.last %}, {% endif -%}
-        {%- endif -%}
         {%- endfor -%}
 
 ```
