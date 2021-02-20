@@ -16,7 +16,7 @@ for the existence of weather alerts for your (Country, Region) on [meteoalarm.eu
 You will get a `binary_sensor.meteoalarmeu` identity that is `on` when there are alerts for your region and
 with attributes useful for automations.
 
-> WARNING: If you are updating from a previous version you should delete any configuration text related 
+> WARNING: If you are updating from a previous version you should delete any configuration text related
 > with this integration from your `configuration.yaml`, since `yaml configuration` is now **NOT supported**.
 
 
@@ -24,7 +24,7 @@ with attributes useful for automations.
 
 > *Before install read [this][5]*.
 
-If you have [HACS][4], use the normal procedure to install a new integration (*meteoalarmeu*) 
+If you have [HACS][4], use the normal procedure to install a new integration (*meteoalarmeu*)
 and see point 3 below.
 
 To do it manually:
@@ -41,14 +41,14 @@ To continue the installation, you need to know the 2-letter iso code of your cou
 For that, please check the page for your country in [meteoalarm.eu](https://www.meteoalarm.eu/)
 or search [here][6] (just the **exact name of the region** without the code).
 
-You need to know, too, the [ISO 639-1 code][7] for the message's language (usually the languages available for each country are english ('en') and the local language (e.g. 'de')). The indication of **language is optional**, and if no language is specified the *message will come unparsed and in all available languages*. 
+You need to know, too, the [ISO 639-1 code][7] for the message's language (usually the languages available for each country are english ('en') and the local language (e.g. 'de')). The indication of **language is optional**, and if no language is specified the *message will come unparsed and in all available languages*.
 
 
 Now do the following steps:
 
 ```
-1. go to Configuration > Integrations 
-2. then click '+ ADD INTEGRATION' 
+1. go to Configuration > Integrations
+2. then click '+ ADD INTEGRATION'
 3. choose 'meteoalarmeu'
 4. on Country choose (e.g. DE) (adapt to your case!)
 5. on Region write (e.g. Kreis Ahrweiler) (adapt to your case!)
