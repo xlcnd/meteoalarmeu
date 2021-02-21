@@ -120,7 +120,7 @@ automation:
 ```
 
 
-For the attribute `awareness_type` (**events**) the possible values are:
+For the attribute `awareness_type` (**events**) the possible values are:<a name="events"></a>
 
 ```
  Avalanches
@@ -138,7 +138,7 @@ For the attribute `awareness_type` (**events**) the possible values are:
 ```
 
 
-For the attribute `awareness_level` (**severity**) the possibilities are (with the meaning following):
+For the attribute `awareness_level` (**severity**) the possibilities are (with the meaning following):<a name="severity"></a>
 
 
 ```
