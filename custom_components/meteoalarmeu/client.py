@@ -30,6 +30,8 @@ class Client:
         self._api = self._get_api()
 
     def update(self, country=None, region=None, language=None, awareness_types=None):
+        if not any(country, region, language, awareness_types):
+            return
         self._country = country or self._country
         self._region = region or self._region
         self._language = language or self._language
