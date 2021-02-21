@@ -55,7 +55,7 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                 await self.async_set_unique_id(self._name)
                 self._abort_if_unique_id_configured()
 
-                return self.async_create_entry(title=info[CONF_NAME], data=info,)
+                return self.async_create_entry(title=info[CONF_NAME], data=info)
             except MeteoAlarmUnrecognizedCountryError:
                 errors["country"] = "unrecognized_country"
             except MeteoAlarmUnrecognizedRegionError:

@@ -49,11 +49,11 @@ class Client:
             raise MeteoAlarmUnavailableLanguageError()
 
     @staticmethod
-    def languages(self):
+    def languages():
         return _languages_list
 
     @staticmethod
-    def countries(self):
+    def countries():
         return _countries_list
 
     def languages_for_country(self):

@@ -7,7 +7,6 @@ from homeassistant.components.binary_sensor import (
     BinarySensorEntity,
 )
 from homeassistant.const import ATTR_ATTRIBUTION, CONF_NAME
-from homeassistant.helpers.entity import Entity
 
 from .client import (
     Client,
@@ -56,7 +55,6 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
 
     if entities:
         async_add_entities(entities)
-    pass
 
 
 class MeteoAlarmBinarySensor(BinarySensorEntity):
