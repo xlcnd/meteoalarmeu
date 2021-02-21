@@ -5,27 +5,22 @@
 [![hacs_badge](https://img.shields.io/badge/HACS-Default-orange.svg?style=for-the-badge)](https://github.com/hacs/default/blob/master/integration)
 
 
-A `custom_component` for [Home-Assistant](https://www.home-assistant.io/) that implements a `binary_sensor`
-for the existence of weather alerts for your (Country, Region) on [meteoalarm.eu][9].
+A `custom_component` for [Home-Assistant](https://www.home-assistant.io/) that implements a `binary_sensor` for the existence of weather alerts for your (Country, Region) on [meteoalarm.eu][9].
 
 
-> *DISCLAIMER: This is an open source project and doesn't have
-> any affiliation with [meteoalarm.eu](https://www.meteoalarm.eu/)*.
+> *DISCLAIMER: This is an open source project and doesn't have any affiliation with [meteoalarm.eu](https://www.meteoalarm.eu/)*.
 
 
-You will get a `binary_sensor.meteoalarmeu` identity that is `on` when there are alerts for your region and
-with attributes useful for automations.
+You will get a `binary_sensor.meteoalarmeu` identity that is `on` when there are alerts for your region and with attributes useful for automations.
 
-> WARNING: If you are updating from a previous version you should delete any configuration text related
-> with this integration from your `configuration.yaml`, since `yaml configuration` is now **NOT supported**.
+> WARNING: If you are updating from a previous version you should delete any configuration text related with this integration from your `configuration.yaml`, since `yaml configuration` is now **NOT supported**.
 
 
 **How to install?**<a name="install"></a>
 
 > *Before install read [this][5]*.
 
-If you have [HACS][4], use the normal procedure to install a new integration (*meteoalarmeu*)
-and see point 3 below.
+If you have [HACS][4], use the normal procedure to install a new integration (*meteoalarmeu*) and see point 3 below.
 
 To do it manually:
 
@@ -36,10 +31,7 @@ To do it manually:
 3. Restart Home-Assistant.
 
 
-To continue the installation, you need to know the 2-letter iso code of your country (e.g. DE) and the **exact name** of your region
-**as reported by your national agency to meteoalarm.eu** (e.g. Kreis Ahrweiler).
-For that, please check the page for your country in [meteoalarm.eu](https://www.meteoalarm.eu/)
-or search [here][6] (just the **exact name of the region** without the code).
+To continue the installation, you need to know the 2-letter iso code of your country (e.g. DE) and the **exact name** of your region **as reported by your national agency to meteoalarm.eu** (e.g. Kreis Ahrweiler). For that, please check the page for your country in [meteoalarm.eu](https://www.meteoalarm.eu/) or search [here][6] (just the **exact name of the region** without the code).
 
 You need to know, too, the [ISO 639-1 code][7] for the message's language (usually the languages available for each country are english ('en') and the local language (e.g. 'de')). The indication of **language is optional**, and if no language is specified the *message will come unparsed and in all available languages*.
 
@@ -172,8 +164,7 @@ White (error MeteoAlarmMissingInfo)
 ```
 
 
-If by any reason the server becames unavailable or sends an error status (and this happens a lot with meteoalarm.eu!)
-the **sensor becomes unavailable too**, if in the next update the server is ok, **it becomes available again**.
+If by any reason the server becames unavailable or sends an error status (and this happens a lot with meteoalarm.eu!) the **sensor becomes unavailable too**, if in the next update the server is ok, **it becomes available again**.
 
 This component uses [meteoalarm.eu][9]'s **rss feeds** which are available for **all** [(active) countries][8].
 
