@@ -1,3 +1,7 @@
+import logging
+
+from homeassistant.helpers.template import forgiving_as_timestamp as as_timestamp
+from homeassistant.helpers.template import timestamp_local
 from meteoalarm_rssapi import (
     MeteoAlarm,
     MeteoAlarmException,
@@ -13,6 +17,8 @@ from meteoalarm_rssapi import languages_list as _languages_list
 AWARENESS_TYPES = _awareness_types
 COUNTRIES = _countries_list
 LANGUAGES = _languages_list
+
+_LOGGER = logging.getLogger(__name__)
 
 
 class Client:
@@ -53,4 +59,18 @@ class Client:
 
     def alerts(self):
         alarms = self._api.alerts()
-        return [m for m in alarms if m["awareness_type"] in self._awareness_types]
+        if alarms:
+            # filter
+            alerts = [m for m in alarms if m["awareness_type"] in self._awareness_types]
+            # change to local date/time (drop the seconds)
+            for alert in alerts:
+                try:
+                    alert["from"] = timestamp_local(as_timestamp(alert["from"]))[:-3]
+                    alert["until"] = timestamp_local(as_timestamp(alert["until"]))[:-3]
+                    alert["published"] = timestamp_local(
+                        as_timestamp(alert["published"])
+                    )[:-3]
+                except ValueError:
+                    _LOGGER.error("Not possible to convert to local time")
+            alarms = alerts
+        return alarms

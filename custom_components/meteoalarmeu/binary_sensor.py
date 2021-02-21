@@ -8,8 +8,6 @@ from homeassistant.components.binary_sensor import (
 )
 from homeassistant.const import ATTR_ATTRIBUTION, CONF_NAME
 from homeassistant.helpers.entity import Entity
-from homeassistant.helpers.template import forgiving_as_timestamp as as_timestamp
-from homeassistant.helpers.template import timestamp_local
 
 from .client import (
     Client,
@@ -114,21 +112,11 @@ class MeteoAlarmBinarySensor(BinarySensorEntity):
             self._state = False
             return
         if not self._available:
-            _LOGGER.info("meteoalarm.eu server is now OK")
+            _LOGGER.info("Server meteoalarm.eu is now OK")
         self._available = True
         alarms = {}
         alarms["alerts"] = 0
         if alerts:
-            for alert in alerts:
-                try:
-                    # change to local date/time (drop the seconds)
-                    alert["from"] = timestamp_local(as_timestamp(alert["from"]))[:-3]
-                    alert["until"] = timestamp_local(as_timestamp(alert["until"]))[:-3]
-                    alert["published"] = timestamp_local(
-                        as_timestamp(alert["published"])
-                    )[:-3]
-                except ValueError:
-                    _LOGGER.error("Not possible to convert to local time")
             nalerts = len(alerts)
             alarms = alerts[0]
             if nalerts > 1:
