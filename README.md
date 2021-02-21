@@ -108,8 +108,9 @@ automation:
   - platform: event
     event_type: persistent_notifications_updated
   action:
+  - delay: '00:00:10'
   - service: persistent_notification.dismiss
-    data_template:
+    data:
       notification_id: >
         {%- for item in states.persistent_notification if item |regex_search("until \*\*(.*?)\*\*") -%}
         {%- if item  | regex_findall_index("until \*\*(.*?)\*\*") | as_timestamp() < as_timestamp(now()) -%}
