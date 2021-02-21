@@ -113,8 +113,10 @@ automation:
     data:
       notification_id: >
         {%- for item in states.persistent_notification if item |regex_search("until \*\*(.*?)\*\*") -%}
+        {%- if item | regex_search("meteoalarm") -%}
         {%- if item  | regex_findall_index("until \*\*(.*?)\*\*") | as_timestamp() < as_timestamp(now()) -%}
-        {{ item.entity_id |replace('persistent_notification.', '') }}{%- if not loop.last %},{% endif -%}
+        {{ item.entity_id | replace('persistent_notification.', '') }}{%- if not loop.last %},{% endif -%}
+        {%- endif -%}
         {%- endif -%}
         {%- endfor -%}
 
