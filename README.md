@@ -173,7 +173,7 @@ White (error MeteoAlarmMissingInfo)
 If by any reason the server becames unavailable or sends an error status (and this happens a lot with meteoalarm.eu!)
 the **sensor becomes unavailable too**, if in the next update the server is ok, **it becomes available again**.
 
-This component uses [meteoalarm.eu][9]'s **rss feeds** that are available for **all** [(active) countries][8].
+This component uses [meteoalarm.eu][9]'s **rss feeds** which are available for **all** [(active) countries][8].
 
 [1]: https://github.com/xlcnd/meteoalarmeu/archive/v2021.4.2.zip
 [2]: https://github.com/xlcnd/meteoalarmeu/issues?q=is%3Aissue+is%3Aopen+is%3Abug
