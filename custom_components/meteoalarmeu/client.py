@@ -21,7 +21,7 @@ LANGUAGES = _languages_list
 
 _LOGGER = logging.getLogger(__name__)
 
-# TIMEOUT = 10
+TIMEOUT = 10
 
 
 class Client:
@@ -43,8 +43,7 @@ class Client:
 
     def _get_api(self):
         try:
-            return MeteoAlarm(self._country, self._region, self._language)
-            # TODO return MeteoAlarm(self._country, self._region, self._language, timeout=TIMEOUT)
+            return MeteoAlarm(self._country, self._region, self._language, timeout=TIMEOUT)
         except MeteoAlarmUnrecognizedCountryError:
             raise MeteoAlarmUnrecognizedCountryError()
         except MeteoAlarmUnrecognizedRegionError:
