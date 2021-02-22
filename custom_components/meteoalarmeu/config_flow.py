@@ -93,6 +93,7 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         if data[CONF_COUNTRY] not in COUNTRIES:
             raise MeteoAlarmUnrecognizedCountryError
 
+        data[CONF_REGION] = data[CONF_REGION].strip("'\"")
         regions = await hass.async_add_executor_job(get_regions, data[CONF_COUNTRY])
         if data[CONF_REGION] not in regions:
             raise MeteoAlarmUnrecognizedRegionError
