@@ -1,4 +1,5 @@
 """Constants for the meteoalarmeu integration."""
+# pylint: disable=unused-import
 from homeassistant.components.binary_sensor import DOMAIN
 
 DOMAIN = "meteoalarmeu"

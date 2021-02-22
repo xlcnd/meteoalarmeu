@@ -14,14 +14,14 @@ from .client import (
     MeteoAlarmUnavailableLanguageError,
     MeteoAlarmUnrecognizedRegionError,
 )
+from .const import DEFAULT_NAME  # pylint:disable=unused-import
+from .const import DOMAIN  # pylint:disable=unused-import
 from .const import (
     ATTRIBUTION,
     CONF_AWARENESS_TYPES,
     CONF_COUNTRY,
     CONF_LANGUAGE,
     CONF_REGION,
-    DEFAULT_NAME,
-    DOMAIN,
     SCAN_INTERVAL_MINUTES,
 )
 

@@ -2,16 +2,17 @@ import logging
 
 from homeassistant.helpers.template import forgiving_as_timestamp as as_timestamp
 from homeassistant.helpers.template import timestamp_local
+from meteoalarm_rssapi import MeteoAlarmException  # pylint:disable=unused-import
+from meteoalarm_rssapi import get_languages  # pylint:disable=unused-import
+from meteoalarm_rssapi import get_regions  # pylint:disable=unused-import
 from meteoalarm_rssapi import (
     MeteoAlarm,
-    MeteoAlarmException,
     MeteoAlarmUnavailableLanguageError,
     MeteoAlarmUnrecognizedCountryError,
     MeteoAlarmUnrecognizedRegionError,
 )
 from meteoalarm_rssapi import awareness_types as _awareness_types
 from meteoalarm_rssapi import countries_list as _countries_list
-from meteoalarm_rssapi import get_languages, get_regions
 from meteoalarm_rssapi import languages_list as _languages_list
 
 AWARENESS_TYPES = _awareness_types
