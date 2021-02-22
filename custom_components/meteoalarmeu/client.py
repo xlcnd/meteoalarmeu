@@ -23,6 +23,7 @@ _LOGGER = logging.getLogger(__name__)
 
 # TIMEOUT = 10
 
+
 class Client:
     def __init__(self, country, region, language=None, awareness_types=AWARENESS_TYPES):
         self._country = country
