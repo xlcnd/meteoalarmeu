@@ -43,7 +43,9 @@ class Client:
 
     def _get_api(self):
         try:
-            return MeteoAlarm(self._country, self._region, self._language, timeout=TIMEOUT)
+            return MeteoAlarm(
+                self._country, self._region, self._language, timeout=TIMEOUT
+            )
         except MeteoAlarmUnrecognizedCountryError:
             raise MeteoAlarmUnrecognizedCountryError()
         except MeteoAlarmUnrecognizedRegionError:

@@ -32,7 +32,6 @@ _LOGGER = logging.getLogger(__name__)
 
 async def async_setup_entry(hass, config_entry, async_add_entities):
     """Add a meteoalarmeu entity from a config_entry."""
-
     country = config_entry.data.get(CONF_COUNTRY)
     region = config_entry.data.get(CONF_REGION)
     language = config_entry.data.get(CONF_LANGUAGE)

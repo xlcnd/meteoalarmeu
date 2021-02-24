@@ -89,7 +89,6 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
 
     async def validate_input(self, hass: core.HomeAssistant, data):
         """Validate country, region, language and list of awareness_types."""
-
         if data[CONF_COUNTRY] not in COUNTRIES:
             raise MeteoAlarmUnrecognizedCountryError
 
