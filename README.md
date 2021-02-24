@@ -110,7 +110,7 @@ automation:
         {%- endfor -%}
 
 ```
-
+You can have more like these by consulting the [HA Forum][10].
 
 For the attribute `awareness_type` (**events**) the possible values are:<a name="events"></a>
 
@@ -174,3 +174,4 @@ This component uses [meteoalarm.eu][9]'s **rss feeds** which are available for *
 [7]: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
 [8]: https://github.com/xlcnd/meteoalarmeu/issues/2
 [9]: https://www.meteoalarm.eu
+[10]: https://community.home-assistant.io/search?q=meteoalarmeu
