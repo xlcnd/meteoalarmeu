@@ -28,7 +28,7 @@ To do it manually:
 3. Restart Home-Assistant.
 
 
-To continue the installation, you need to know the 2-letter iso code of your country (e.g. DE) and the **exact name** of your region **as reported by your national agency to meteoalarm.eu** (e.g. Kreis Ahrweiler). For that, search [here][6] (just the **exact name of the region** without the code) or check the page for your country in [meteoalarm.eu](https://www.meteoalarm.eu/).
+To continue the installation, you need to know the 2-letter [ISO 3166-1 Alpha-2][11] of your country (e.g. DE) and the **exact name** of your region **as reported by your national agency to meteoalarm.eu** (e.g. Kreis Ahrweiler). For that, search [here][6] (just the **exact name of the region** without the code) or check the page for your country in [meteoalarm.eu](https://www.meteoalarm.eu/).
 
 You need to know, too, the [ISO 639-1 code][7] for the message's language (usually the languages available for each country are english ('en') and the local language (e.g. 'de')). The indication of **language is optional**, and if no language is specified the *message will come unparsed and in all available languages*.
 
@@ -171,7 +171,8 @@ This component uses [meteoalarm.eu][9]'s **rss feeds** which are available for *
 [4]: https://hacs.xyz/
 [5]: https://github.com/xlcnd/meteoalarmeu/issues/3
 [6]: https://github.com/xlcnd/meteoalarm-rssapi/blob/main/meteoalarm_rssapi/_resources.py
-[7]: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
+[7]: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
 [8]: https://github.com/xlcnd/meteoalarmeu/issues/2
 [9]: https://www.meteoalarm.eu
 [10]: https://community.home-assistant.io/search?q=meteoalarmeu
+[11]: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
