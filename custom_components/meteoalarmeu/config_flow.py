@@ -78,6 +78,9 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                 _LOGGER.exception("Unexpected exception")
                 errors["base"] = "unknown"
             if errors:
+                languages = await self.adapt_languages(
+                    self.hass, user_input[CONF_COUNTRY]
+                )
                 return self.async_show_form(
                     step_id="user",
                     data_schema=vol.Schema(
@@ -90,7 +93,7 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                             ): str,
                             vol.Optional(
                                 CONF_LANGUAGE, default=user_input[CONF_LANGUAGE]
-                            ): vol.In(LANGUAGES),
+                            ): vol.In(languages),
                             vol.Optional(
                                 CONF_AWARENESS_TYPES,
                                 default=user_input[CONF_AWARENESS_TYPES],
@@ -146,6 +149,14 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             CONF_NAME: data[CONF_NAME],
             CONF_AWARENESS_TYPES: data[CONF_AWARENESS_TYPES],
         }
+
+    async def adapt_languages(self, hass: core.HomeAssistant, country):
+        """Get available languages for country if possible."""
+        if country:
+            languages = await hass.async_add_executor_job(get_languages, country)
+        else:
+            languages = LANGUAGES
+        return languages
 
 
 # pylint:disable=too-few-public-methods
