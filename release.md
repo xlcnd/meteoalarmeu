@@ -5,10 +5,11 @@
 
 Main changes:
 1. This release improves the user experience when configuring the component.
-2. The **bug #10** was fixed and now **Bulgaria should use** `bg` as its language (ISO 639-1 code).
+2. The **[bug #10][3]** was fixed and now **Bulgaria should use** `bg` as its language (ISO 639-1 code).
 
 A very useful set of automations are in the [documentation][1]. You can have more like these by consulting the [HA Forum][2].
 
 
 [1]: https://github.com/xlcnd/meteoalarmeu/blob/main/README.md#automations
 [2]: https://community.home-assistant.io/search?q=meteoalarmeu
+[3]: https://github.com/xlcnd/meteoalarmeu/issues/10
