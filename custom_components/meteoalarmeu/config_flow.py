@@ -78,13 +78,18 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                     step_id="user",
                     data_schema=vol.Schema(
                         {
-                            vol.Required(CONF_COUNTRY, default=user_input[CONF_COUNTRY]): vol.In(COUNTRIES),
-                            vol.Required(CONF_REGION, default=user_input[CONF_REGION]): str,
-                            vol.Optional(CONF_LANGUAGE, default=user_input[CONF_LANGUAGE]): vol.In(
-                                LANGUAGES
-                            ),
+                            vol.Required(
+                                CONF_COUNTRY, default=user_input[CONF_COUNTRY]
+                            ): vol.In(COUNTRIES),
+                            vol.Required(
+                                CONF_REGION, default=user_input[CONF_REGION]
+                            ): str,
                             vol.Optional(
-                                CONF_AWARENESS_TYPES, default=user_input[CONF_AWARENESS_TYPES]
+                                CONF_LANGUAGE, default=user_input[CONF_LANGUAGE]
+                            ): vol.In(LANGUAGES),
+                            vol.Optional(
+                                CONF_AWARENESS_TYPES,
+                                default=user_input[CONF_AWARENESS_TYPES],
                             ): cv.multi_select(DEFAULT_AWARENESS_TYPES),
                         }
                     ),
