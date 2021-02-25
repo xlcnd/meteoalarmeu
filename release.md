@@ -5,7 +5,7 @@
 
 Main changes:
 1. This release improves the user experience when configuring the component.
-2. Fixed the **bug #10** and now **Bulgaria should use** as its language `bg` (ISO 639-1 code).
+2. The **bug #10** was fixed and now **Bulgaria should use** `bg` as its language (ISO 639-1 code).
 
 A very useful set of automations are in the [documentation][1]. You can have more like these by consulting the [HA Forum][2].
 
