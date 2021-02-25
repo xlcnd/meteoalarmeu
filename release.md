@@ -6,7 +6,8 @@
 
 This release maintains the basic funcionality of the previous one, but [TENTATIVE...Bulgaria can now chose its language as `bg` (ISO 639-1 code (issue #10))].
 
-A very useful set of automations are in the [documentation][1].
+A very useful set of automations are in the [documentation][1]. You can have more like these by consulting the [HA Forum][2].
 
 
 [1]: https://github.com/xlcnd/meteoalarmeu/blob/main/README.md#automations
+[2]: https://community.home-assistant.io/search?q=meteoalarmeu
