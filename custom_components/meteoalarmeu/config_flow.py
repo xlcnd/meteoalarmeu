@@ -44,7 +44,7 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         self._name = DEFAULT_NAME
 
     async def async_step_user(self, user_input=None):
-        """Handle the initial step."""
+        """Handle the initial step (STEP 1)."""
         errors = {}
 
         if user_input is not None:
@@ -58,17 +58,38 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                 return self.async_create_entry(title=info[CONF_NAME], data=info)
             except MeteoAlarmUnrecognizedCountryError:
                 errors["country"] = "unrecognized_country"
+                user_input[CONF_COUNTRY] = ""
             except MeteoAlarmUnrecognizedRegionError:
                 errors["region"] = "unrecognized_region"
+                user_input[CONF_REGION] = ""
             except MeteoAlarmUnavailableLanguageError:
                 errors["language"] = "not_available_language"
+                user_input[CONF_LANGUAGE] = DEFAULT_LANGUAGE
             except InvalidAwarenessType:
                 errors["awareness_type"] = "invalid_awareness_type"
+                user_input[CONF_AWARENESS_TYPES] = DEFAULT_AWARENESS_TYPES
             except exceptions.HomeAssistantError:
                 return self.async_abort(reason="already_configured")
             except Exception:  # pylint: disable=broad-except
                 _LOGGER.exception("Unexpected exception")
                 errors["base"] = "unknown"
+            if errors:
+                return self.async_show_form(
+                    step_id="user",
+                    data_schema=vol.Schema(
+                        {
+                            vol.Required(CONF_COUNTRY, default=user_input[CONF_COUNTRY]): vol.In(COUNTRIES),
+                            vol.Required(CONF_REGION, default=user_input[CONF_REGION]): str,
+                            vol.Optional(CONF_LANGUAGE, default=user_input[CONF_LANGUAGE]): vol.In(
+                                LANGUAGES
+                            ),
+                            vol.Optional(
+                                CONF_AWARENESS_TYPES, default=user_input[CONF_AWARENESS_TYPES]
+                            ): cv.multi_select(DEFAULT_AWARENESS_TYPES),
+                        }
+                    ),
+                    errors=errors,
+                )
 
         return self.async_show_form(
             step_id="user",
