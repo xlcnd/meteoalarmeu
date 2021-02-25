@@ -43,13 +43,10 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
     def __init__(self):
         self._languages = LANGUAGES
         self._regions = [""]
+        self._hold = ""
 
     async def async_step_user(self, user_input=None):
-        """Handle the initial step (STEP 1)."""
-
-        # TODO check if there are already an entry with an
-        # unique_id == self._name, if true then abort
-
+        """Handle the initial step."""
         errors = {}
 
         if user_input is not None:
@@ -84,9 +81,6 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                     data_schema=vol.Schema(
                         {
                             vol.Required(
-                                CONF_COUNTRY, default=user_input[CONF_COUNTRY]
-                            ): vol.In(COUNTRIES),
-                            vol.Required(
                                 CONF_REGION, default=user_input[CONF_REGION]
                             ): vol.In(self._regions),
                             vol.Optional(
@@ -120,15 +114,24 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
 
     async def validate_input(self, hass: core.HomeAssistant, data):
         """Validate country, region, language and list of awareness_types."""
+        # Hold 'country'
+        try:
+            if data[CONF_COUNTRY]:
+                self._hold = data[CONF_COUNTRY]
+        except KeyError:
+            data[CONF_COUNTRY] = self._hold
+
         if data[CONF_COUNTRY] not in COUNTRIES:
             raise MeteoAlarmUnrecognizedCountryError
 
+        # Clean and update
         data[CONF_REGION] = data[CONF_REGION].strip("'\"")
         await self.async_get_regions(hass, data[CONF_COUNTRY])
+        await self.async_get_languages(hass, data[CONF_COUNTRY])
+
         if data[CONF_REGION] not in self._regions:
             raise MeteoAlarmUnrecognizedRegionError
 
-        await self.async_get_languages(hass, data[CONF_COUNTRY])
         if data[CONF_LANGUAGE] and data[CONF_LANGUAGE] not in self._languages:
             raise MeteoAlarmUnavailableLanguageError
 
