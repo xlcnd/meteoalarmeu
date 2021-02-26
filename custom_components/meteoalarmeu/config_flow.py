@@ -45,8 +45,17 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         self._regions = [""]
         self._hold = ""
 
+    async def async_already_configured(self):
+        for entry in self._async_current_entries():
+            if entry.unique_id == DEFAULT_NAME:
+                return True
+        return False
+
     async def async_step_user(self, user_input=None):
         """Handle the initial step."""
+        if await self.async_already_configured():
+            return self.async_abort(reason="already_configured")
+
         errors = {}
 
         if user_input is not None:
