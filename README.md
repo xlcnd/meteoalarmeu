@@ -28,7 +28,7 @@ To do it manually:
 3. Restart Home-Assistant.
 
 
-To continue the installation, you need to know the 2-letter [ISO 3166-1 Alpha-2][11] of your country (e.g. DE) ([search here][8]) and the **exact name** of your region **as reported by your national agency to meteoalarm.eu** (e.g. Kreis Ahrweiler). For that, search [here][6] (just the **exact name of the region** without the code) or check the page for your country in [meteoalarm.eu](https://www.meteoalarm.eu/).
+To continue the installation, you need to know the 2-letter [ISO 3166-1 Alpha-2][11] of your country (e.g. DE) ([search here][8]) and the **exact name** of your region **as reported by your national agency to meteoalarm.eu** (e.g. Kreis Ahrweiler). For that, [search here][6] (just the **exact name of the region** without the code) or check the page for your country in [meteoalarm.eu](https://www.meteoalarm.eu/).
 
 You need to know, too, the [ISO 639-1 code][7] for the message's language (usually the languages available for each country are english ('en') and the local language (e.g. 'de')). The indication of **language is optional**, and if no language is specified the *message will come unparsed and in all available languages*.
 
