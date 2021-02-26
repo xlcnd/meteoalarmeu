@@ -21,4 +21,4 @@ v2021.4.1, 2021-02-18 -- New 'config flow' component (fix manifest.json).
 v2021.4.2, 2021-02-22 -- New 'config flow' component (new 'alert_id').
 v2021.4.3, 2021-02-24 -- New 'config flow' component (uses new api v0.3.7).
 v2021.4.4, 2021-02-24 -- (NOT RELEASED).
-v2021.5.0, 2021-02-24 -- TENTATIVE
+v2021.5.0, 2021-02-24 -- Improved user expirence (uses new api v0.3.8).
