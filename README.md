@@ -165,7 +165,7 @@ If by any reason the server becames unavailable or sends an error status (and th
 
 This component uses [meteoalarm.eu][9]'s **rss feeds** which are available for **all** [(active) countries][8].
 
-[1]: https://github.com/xlcnd/meteoalarmeu/archive/v2021.5.0.zip
+[1]: https://github.com/xlcnd/meteoalarmeu/archive/v2021.5.1.zip
 [2]: https://github.com/xlcnd/meteoalarmeu/issues?q=is%3Aissue+is%3Aopen+label%3Abug
 [3]: https://github.com/xlcnd/meteoalarmeu/releases
 [4]: https://hacs.xyz/
