@@ -3,13 +3,13 @@
 
 > WARNING: If you are updating from a previous version you should delete any configuration text related with this integration from your `configuration.yaml`, since *yaml configuration* is now **NOT supported** and this integration will **STOP to work (if you don't do it)**!.
 
-Main changes:
-1. This release improves the user experience when configuring the component.
-2. The **[bug #10][3]** was fixed and now **Bulgaria should use** `bg` as its language (ISO 639-1 code).
+Main change:
+
+You don't need to know anymore the `country` and `language`ISO codes, **choose by name in your native language**.
+
 
 A very useful set of automations are in the [documentation][1]. You can have more like these by consulting the [HA Forum][2].
 
 
 [1]: https://github.com/xlcnd/meteoalarmeu/blob/main/README.md#automations
 [2]: https://community.home-assistant.io/search?q=meteoalarmeu
-[3]: https://github.com/xlcnd/meteoalarmeu/issues/10
