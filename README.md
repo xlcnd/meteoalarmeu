@@ -17,7 +17,7 @@ You will get a `binary_sensor.meteoalarmeu` identity that is `on` when there are
 
 > *Before install read [this][5]*.
 
-If you have [HACS][4], use the normal procedure to install a new integration (*meteoalarmeu*) and see point 3 below.
+If you have [HACS][4], use the normal procedure to install a new integration (search for *meteoalarmeu*) and see point 3 below.
 
 To do it manually:
 
