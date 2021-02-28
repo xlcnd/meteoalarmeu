@@ -207,8 +207,10 @@ languages_map = {
 
 
 def cmap(country):
+    """Transform 'country' local <-> iso."""
     return countries_map.get(country)
 
 
 def lmap(language):
+    """Transform 'language' local <-> iso."""
     return languages_map.get(language)

@@ -7,8 +7,6 @@ from homeassistant import config_entries, core, exceptions
 from homeassistant.const import CONF_NAME
 
 from .client import AWARENESS_TYPES as AWARENESS_TYPES_API
-#from .client import COUNTRIES as COUNTRIES_API
-#from .client import LANGUAGES as LANGUAGES_API
 from .client import (
     MeteoAlarmUnavailableLanguageError,
     MeteoAlarmUnrecognizedCountryError,
@@ -171,7 +169,10 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         if country:
             self._languages = [DEFAULT_LANGUAGE]
             self._languages.extend(
-                map(lmap, await hass.async_add_executor_job(get_languages, cmap(country)))
+                map(
+                    lmap,
+                    await hass.async_add_executor_job(get_languages, cmap(country)),
+                )
             )
         else:
             self._languages = LANGUAGES
@@ -179,7 +180,9 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
     async def async_get_regions(self, hass: core.HomeAssistant, country):
         """Get the regions of the country if possible."""
         if country:
-            self._regions = await hass.async_add_executor_job(get_regions, cmap(country))
+            self._regions = await hass.async_add_executor_job(
+                get_regions, cmap(country)
+            )
         else:
             self._regions = [""]
 
