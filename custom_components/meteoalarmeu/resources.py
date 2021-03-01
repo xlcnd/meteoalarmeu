@@ -2,14 +2,12 @@ ui_countries_list = [
     "Bosnia I Hercegovína",
     "België,Belgique",
     "България",
-    "Suisse,Schweiz,Svizzera",
     "Κύπρος",
     "Česko",
     "Deutschland",
     "Danmark",
     "Eesti",
     "España",
-    "Suomi,Finland",
     "France",
     "Ελλάς",
     "Hrvatska",
@@ -35,6 +33,8 @@ ui_countries_list = [
     "Sverige",
     "Slovenija",
     "Slovensko",
+    "Suisse,Schweiz,Svizzera",
+    "Suomi,Finland",
     "United Kingdom",
 ]
 ui_languages_list = [
