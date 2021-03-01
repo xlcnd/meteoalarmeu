@@ -161,6 +161,7 @@ If by any reason the server becames unavailable or sends an error status (and th
 
 This component uses [meteoalarm.eu][9]'s **rss feeds** which are available for **all** [(active) countries][8].
 
+
 [1]: https://github.com/xlcnd/meteoalarmeu/archive/v2021.5.2.zip
 [2]: https://github.com/xlcnd/meteoalarmeu/issues?q=is%3Aissue+is%3Aopen+label%3Abug
 [3]: https://github.com/xlcnd/meteoalarmeu/releases
@@ -170,5 +171,5 @@ This component uses [meteoalarm.eu][9]'s **rss feeds** which are available for *
 [7]: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
 [8]: https://github.com/xlcnd/meteoalarmeu/issues/2
 [9]: https://www.meteoalarm.eu
-[10]: https://community.home-assistant.io/search?q=meteoalarmeu
+[10]: https://community.home-assistant.io/search?q=meteoalarmeu%20after%3A2021-02-22%20status%3Aopen%20tags%3Aautomation%2Ctemplates%2Cblueprint
 [11]: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
