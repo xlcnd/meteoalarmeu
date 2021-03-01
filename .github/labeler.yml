@@ -4,5 +4,9 @@ repo:
 test:
   - custom_components/meteoalrmeu/test/*
 
+translations:
+  - custom_components/meteoalrmeu/translations/*
+
 core:
   - custom_components/meteoalrmeu/*
+
