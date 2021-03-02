@@ -107,7 +107,7 @@ automation:
         {%- endfor -%}
 
 ```
-You can have more like these by consulting the [HA Forum][10].
+You can have more like these by searching the [HA Forum][10].
 
 For the attribute `awareness_type` (**events**) the possible values are:<a name="events"></a>
 
