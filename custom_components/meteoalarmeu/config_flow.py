@@ -50,6 +50,7 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                 return True
         return False
 
+    # pylint: disable=broad-except
     async def async_step_user(self, user_input=None):
         """Handle the initial step."""
         if await self.async_already_configured():
@@ -85,7 +86,7 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                 user_input[CONF_AWARENESS_TYPES] = DEFAULT_AWARENESS_TYPES
             except exceptions.HomeAssistantError:
                 return self.async_abort(reason="already_configured")
-            except Exception:  # pylint: disable=broad-except
+            except Exception:
                 _LOGGER.exception("Unexpected exception")
                 errors["base"] = "unknown"
             if errors:
