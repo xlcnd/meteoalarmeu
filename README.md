@@ -17,7 +17,7 @@ You will get a `binary_sensor.meteoalarmeu` identity that is `on` when there are
 
 > *Before install read [this][5]*.
 
-If you have [HACS][4], use the normal procedure to install a new integration (search for *meteoalarmeu*) and see point 3 below.
+If you have [HACS][4], use the normal procedure to install a new integration (search for *meteoalarmeu*).
 
 To do it manually:
 
@@ -27,7 +27,8 @@ To do it manually:
 
 3. Restart Home-Assistant.
 
-To continue the installation, you need to know the **exact name** of your region **as reported by your national agency to meteoalarm.eu** (e.g. Kreis Ahrweiler). For that, [search here][6] (just the **exact name of the region** without the code) or in the steps below, **enter something in the region's field (e.g. z)** and after `SUBMIT` choose your region!
+
+To continue the installation, you need to know the **exact name** of your region **as reported by your national agency to meteoalarm.eu** (e.g. Kreis Ahrweiler). For that, [search here][6] (just the **exact name of the region** without the code) or in the step 5 below, **enter something in the region's field (e.g. 'z')** and after `SUBMIT` choose your region!
 
 Now do the following steps:
 
