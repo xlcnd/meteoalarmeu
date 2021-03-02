@@ -170,7 +170,7 @@ This component uses [meteoalarm.eu][9]'s **rss feeds** which are available for *
 [5]: https://github.com/xlcnd/meteoalarmeu/issues/3
 [6]: https://github.com/xlcnd/meteoalarm-rssapi/blob/main/meteoalarm_rssapi/_resources.py
 [7]: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
-[8]: https://github.com/xlcnd/meteoalarmeu/issues/2
+[8]: https://github.com/xlcnd/meteoalarm-rssapi/issues/1
 [9]: https://www.meteoalarm.eu
 [10]: https://community.home-assistant.io/search?q=meteoalarmeu%20after%3A2021-02-22%20status%3Aopen%20tags%3Aautomation%2Ctemplates%2Cblueprint
 [11]: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
