@@ -48,7 +48,7 @@ If all goes well (be carefull with step 5), now you have a new sensor `binary_se
 
 You can do a lot with automations... some useful ones would be:<a name="automations"></a>
 
-```
+```yaml
 automation:
 
 - alias: Alert me about weather warnings
