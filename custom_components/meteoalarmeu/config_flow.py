@@ -28,7 +28,7 @@ from .resources import cmap, lmap, ui_countries_list, ui_languages_list
 COUNTRIES = ui_countries_list
 LANGUAGES = [DEFAULT_LANGUAGE]
 LANGUAGES.extend(ui_languages_list)
-DEFAULT_AWARENESS_TYPES = sorted(list(AWARENESS_TYPES_API))
+DEFAULT_AWARENESS_TYPES = sorted(AWARENESS_TYPES_API)
 
 _LOGGER = logging.getLogger(__name__)
 
