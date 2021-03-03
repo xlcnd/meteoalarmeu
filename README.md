@@ -43,10 +43,6 @@ Now do the following steps:
 8. click 'SUBMIT'
 ```
 
-**Or** click in the button 
-
-[![Open your Home Assistant instance and start setting up a new integration.](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=meteoalarmeu)
-
 
 If all goes well (be carefull with step 5), now you have a new sensor `binary_sensor.meteoalarmeu`. You should wait for some minutes (up until 30m!) for HA to start to update the sensor. Meanwhile, add your automations for the sensor and **don't forget** to reload them.
 
