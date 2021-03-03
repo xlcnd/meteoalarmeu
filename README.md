@@ -30,7 +30,6 @@ To do it manually:
 
 To continue the installation, you need to know the **exact name** of your region **as reported by your national agency to meteoalarm.eu** (e.g. Kreis Ahrweiler). For that, [search here][6] (just the **exact name of the region** without the code) or in the step 5 below, **enter something in the region's field (e.g. 'z')** and after `SUBMIT` choose your region!
 
-[![Open your Home Assistant instance and start setting up a new integration.](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=meteoalarm)
 
 Now do the following steps:
 
@@ -44,6 +43,9 @@ Now do the following steps:
 7. left the rest as it is OR unselect some events
 8. click 'SUBMIT'
 ```
+
+**Or** click in the button [![Open your Home Assistant instance and start setting up a new integration.](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=meteoalarm)
+
 
 If all goes well (be carefull with step 5), now you have a new sensor `binary_sensor.meteoalarmeu`. You should wait for some minutes (up until 30m!) for HA to start to update the sensor. Meanwhile, add your automations for the sensor and **don't forget** to reload them.
 
