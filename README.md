@@ -32,7 +32,7 @@ To continue the installation, you need to know the **exact name** of your region
 
 Now do the following steps:
 
-```
+```markdown
 1. go to Configuration > Integrations
 2. then click '+ ADD INTEGRATION'
 3. choose 'meteoalarmeu'
@@ -112,7 +112,7 @@ You can have more like these by searching the [HA Forum][10].
 
 For the attribute `awareness_type` (**events**) the possible values are:<a name="events"></a>
 
-```
+```markdown
  Avalanches
  Coastal Event
  Extreme high temperature
@@ -131,7 +131,7 @@ For the attribute `awareness_type` (**events**) the possible values are:<a name=
 For the attribute `awareness_level` (**severity**) the possibilities are (with the meaning following):<a name="severity"></a>
 
 
-```
+```markdown
 Red
   The weather is very dangerous. Exceptionally intense meteorological phenomena have been forecast.
   Major damage and accidents are likely, in many cases with threat to life and limb, over a wide
