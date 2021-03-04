@@ -89,7 +89,6 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             errors=errors,
         )
 
-
     async def validate_country(self, data):
         """Validate country."""
         if data[CONF_COUNTRY] not in COUNTRIES:
@@ -100,7 +99,6 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         return {
             CONF_COUNTRY: data[CONF_COUNTRY],
         }
-
 
     # pylint: disable=broad-except
     async def async_step_other(self, user_input=None, data=None):
@@ -211,7 +209,9 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             self._languages.extend(
                 map(
                     lmap,
-                    await self.hass.async_add_executor_job(get_languages, cmap(self._country)),
+                    await self.hass.async_add_executor_job(
+                        get_languages, cmap(self._country)
+                    ),
                 )
             )
         else:
