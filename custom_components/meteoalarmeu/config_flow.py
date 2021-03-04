@@ -146,20 +146,18 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                     errors=errors,
                 )
             try:
-
                 # Set 'unique_id' and abort flow if already configured
                 await self.async_set_unique_id(DEFAULT_NAME)
                 self._abort_if_unique_id_configured()
-
-                # Convert 'country' and 'language' to ISO
-                info[CONF_COUNTRY] = cmap(info[CONF_COUNTRY])
-                info[CONF_LANGUAGE] = lmap(info[CONF_LANGUAGE])
-
-                # Create new entry in 'core.config_entries'
-                return self.async_create_entry(title=info[CONF_NAME], data=info)
-
             except exceptions.HomeAssistantError:
                 return self.async_abort(reason="already_configured")
+
+            # Convert 'country' and 'language' to ISO
+            info[CONF_COUNTRY] = cmap(info[CONF_COUNTRY])
+            info[CONF_LANGUAGE] = lmap(info[CONF_LANGUAGE])
+
+            # Create new entry in 'core.config_entries'
+            return self.async_create_entry(title=info[CONF_NAME], data=info)
 
         return self.async_show_form(
             step_id="other",
