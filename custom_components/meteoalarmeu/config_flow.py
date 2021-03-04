@@ -117,20 +117,7 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                     ),
                     errors=errors,
                 )
-            try:
-                # Set 'unique_id' and abort flow if already configured
-                await self.async_set_unique_id(DEFAULT_NAME)
-                self._abort_if_unique_id_configured()
-            except exceptions.HomeAssistantError:
-                return self.async_abort(reason="already_configured")
-
-            # Convert 'country' and 'language' to ISO
-            self._data[CONF_COUNTRY] = cmap(self._data[CONF_COUNTRY])
-            if self._data[CONF_LANGUAGE]:
-                self._data[CONF_LANGUAGE] = lmap(self._data[CONF_LANGUAGE])
-
-            # Create new entry in 'core.config_entries'
-            return self.async_create_entry(title=self._data[CONF_NAME], data=self._data)
+            return await self.async_handle_create_entry()
 
         return self.async_show_form(
             step_id="other",
@@ -150,6 +137,22 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             ),
             errors=errors,
         )
+
+    async def async_handle_create_entry(self):
+        try:
+            # Set 'unique_id' and abort flow if already configured
+            await self.async_set_unique_id(DEFAULT_NAME)
+            self._abort_if_unique_id_configured()
+        except exceptions.HomeAssistantError:
+            return self.async_abort(reason="already_configured")
+
+        # Convert 'country' and 'language' to ISO
+        self._data[CONF_COUNTRY] = cmap(self._data[CONF_COUNTRY])
+        if self._data[CONF_LANGUAGE]:
+            self._data[CONF_LANGUAGE] = lmap(self._data[CONF_LANGUAGE])
+
+        # Create new entry in 'core.config_entries'
+        return self.async_create_entry(title=self._data[CONF_NAME], data=self._data)
 
     async def async_get_languages(self):
         """Get available languages for country if possible."""
