@@ -3,7 +3,7 @@ import logging
 
 import homeassistant.helpers.config_validation as cv
 import voluptuous as vol
-from homeassistant import config_entries, core, exceptions
+from homeassistant import config_entries, exceptions
 from homeassistant.const import CONF_NAME
 
 from .client import AWARENESS_TYPES as AWARENESS_TYPES_API
