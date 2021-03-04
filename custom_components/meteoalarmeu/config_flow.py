@@ -7,7 +7,10 @@ from homeassistant import config_entries, exceptions
 from homeassistant.const import CONF_NAME
 
 from .client import AWARENESS_TYPES as AWARENESS_TYPES_API
-from .client import get_languages, get_regions
+from .client import (
+    get_languages,
+    get_regions,
+)
 from .const import DOMAIN  # pylint:disable=unused-import
 from .const import (
     CONF_AWARENESS_TYPES,
@@ -36,8 +39,8 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
     def __init__(self):
         self._languages = LANGUAGES
         self._regions = [""]
-        self._country = ""
         self._data = {}
+        self._data[CONF_LANGUAGE] = DEFAULT_LANGUAGE
 
     async def async_already_configured(self):
         for entry in self._async_current_entries():
@@ -55,21 +58,17 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
 
         if user_input is not None:
             try:
-                # Collect 'info'
-                info = {}
-
                 # Get 'country'
-                self._country = user_input[CONF_COUNTRY]
-                info[CONF_COUNTRY] = user_input[CONF_COUNTRY]
+                self._data[CONF_COUNTRY] = user_input[CONF_COUNTRY] 
 
                 # Sync 'regions' and 'languages'
                 await self.async_get_regions()
                 await self.async_get_languages()
 
                 # Add 'name'
-                info[CONF_NAME] = DEFAULT_NAME
+                self._data[CONF_NAME] = DEFAULT_NAME
 
-                return await self.async_step_other(data=info)
+                return await self.async_step_other()
 
             except Exception:
                 _LOGGER.exception("Unexpected exception")
@@ -85,25 +84,19 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             errors=errors,
         )
 
+
     # pylint: disable=broad-except
-    async def async_step_other(self, user_input=None, data=None):
+    async def async_step_other(self, user_input=None):
         """Handle the sub step."""
         errors = {}
-
-        # Hold passed 'data'
-        if data:
-            self._data = data
 
         if user_input is not None:
             try:
                 # Get the data from the form
-                info = dict(user_input)
-                # Complement 'info' with passed 'data'
-                info.update(self._data)
+                self._data.update(user_input)
             except Exception:
                 _LOGGER.exception("Unexpected exception")
                 errors["base"] = "unknown"
-            if errors:
                 user_input[CONF_REGION] = ""
                 user_input[CONF_LANGUAGE] = DEFAULT_LANGUAGE
                 user_input[CONF_AWARENESS_TYPES] = DEFAULT_AWARENESS_TYPES
@@ -133,11 +126,12 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                 return self.async_abort(reason="already_configured")
 
             # Convert 'country' and 'language' to ISO
-            info[CONF_COUNTRY] = cmap(info[CONF_COUNTRY])
-            info[CONF_LANGUAGE] = lmap(info[CONF_LANGUAGE])
+            self._data[CONF_COUNTRY] = cmap(self._data[CONF_COUNTRY])
+            if self._data[CONF_LANGUAGE]:
+                self._data[CONF_LANGUAGE] = lmap(self._data[CONF_LANGUAGE])
 
             # Create new entry in 'core.config_entries'
-            return self.async_create_entry(title=info[CONF_NAME], data=info)
+            return self.async_create_entry(title=self._data[CONF_NAME], data=self._data)
 
         return self.async_show_form(
             step_id="other",
@@ -158,15 +152,16 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             errors=errors,
         )
 
+
     async def async_get_languages(self):
         """Get available languages for country if possible."""
-        if self._country:
+        if self._data[CONF_COUNTRY]:
             self._languages = [DEFAULT_LANGUAGE]
             self._languages.extend(
                 map(
                     lmap,
                     await self.hass.async_add_executor_job(
-                        get_languages, cmap(self._country)
+                        get_languages, cmap(self._data[CONF_COUNTRY])
                     ),
                 )
             )
@@ -175,9 +170,9 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
 
     async def async_get_regions(self):
         """Get the regions of the country if possible."""
-        if self._country:
+        if self._data[CONF_COUNTRY]:
             self._regions = await self.hass.async_add_executor_job(
-                get_regions, cmap(self._country)
+                get_regions, cmap(self._data[CONF_COUNTRY])
             )
         else:
             self._regions = [""]
