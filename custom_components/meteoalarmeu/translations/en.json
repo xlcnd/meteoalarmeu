@@ -12,7 +12,11 @@
         "step": {
             "user": {
                 "data": {
-                    "country": "Country",
+                    "country": "Country"
+                }
+            },
+            "other": {
+                "data": {
                     "region": "Region",
                     "language": "Language",
                     "awareness_types": "Events"
