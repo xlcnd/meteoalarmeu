@@ -59,7 +59,7 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         if user_input is not None:
             try:
                 # Get 'country'
-                self._data[CONF_COUNTRY] = user_input[CONF_COUNTRY] 
+                self._data[CONF_COUNTRY] = user_input[CONF_COUNTRY]
 
                 # Sync 'regions' and 'languages'
                 await self.async_get_regions()
@@ -83,7 +83,6 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             ),
             errors=errors,
         )
-
 
     # pylint: disable=broad-except
     async def async_step_other(self, user_input=None):
@@ -151,7 +150,6 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             ),
             errors=errors,
         )
-
 
     async def async_get_languages(self):
         """Get available languages for country if possible."""
