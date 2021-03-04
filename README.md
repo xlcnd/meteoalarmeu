@@ -33,15 +33,15 @@ Now do the following steps:
 1. go to Configuration > Integrations
 2. then click '+ ADD INTEGRATION'
 3. choose 'meteoalarmeu'
-4. on Country choose (e.g. Deutschland) (click SUBMIT!)
-5. on Region choose (e.g. Kreis Ahrweiler) (adapt to your case!)
-6. on Language choose (e.g. deutsch) (adapt to your case!)
+4. on Country choose (e.g. Deutschland) and then click 'SUBMIT'
+5. on Region choose (e.g. Kreis Ahrweiler)
+6. on Language choose (e.g. deutsch)
 7. left the rest as it is OR unselect some events
 8. click 'SUBMIT'
 ```
 
 
-If all goes well (be carefull with step 5), now you have a new sensor `binary_sensor.meteoalarmeu`. You should wait for some minutes (up until 30m!) for HA to start to update the sensor. Meanwhile, add your automations for the sensor and **don't forget** to reload them.
+If all goes well, you have a new sensor `binary_sensor.meteoalarmeu`. You should wait for some minutes (up until 30m!) for HA to start to update the sensor. Meanwhile, add your automations for the sensor and **don't forget** to reload them.
 
 
 You can do a lot with automations... some useful ones would be:<a name="automations"></a>
