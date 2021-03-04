@@ -16,9 +16,6 @@
        }
     },
     "error": {
-      "unrecognized_country": "[%key:common::config_flow::error::unrecognized_country%]",
-      "unrecognized_region": "[%key:common::config_flow::error::unrecognized_region%]",
-      "not_available_language": "[%key:common::config_flow::error::not_available_language%]",
       "unknown": "[%key:common::config_flow::error::unknown%]"
     },
     "abort": {

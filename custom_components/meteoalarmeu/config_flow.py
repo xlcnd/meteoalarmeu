@@ -8,9 +8,6 @@ from homeassistant.const import CONF_NAME
 
 from .client import AWARENESS_TYPES as AWARENESS_TYPES_API
 from .client import (
-    MeteoAlarmUnavailableLanguageError,
-    MeteoAlarmUnrecognizedCountryError,
-    MeteoAlarmUnrecognizedRegionError,
     get_languages,
     get_regions,
 )
@@ -61,7 +58,12 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
 
         if user_input is not None:
             try:
-                info = await self.validate_country(user_input)
+                # Collect 'info'
+                info = {}
+
+                # Get 'country'
+                self._country = user_input[CONF_COUNTRY]
+                info[CONF_COUNTRY] = user_input[CONF_COUNTRY] 
 
                 # Sync 'regions' and 'languages'
                 await self.async_get_regions()
@@ -72,9 +74,6 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
 
                 return await self.async_step_other(data=info)
 
-            except MeteoAlarmUnrecognizedCountryError:
-                errors["country"] = "unrecognized_country"
-                user_input[CONF_COUNTRY] = ""
             except Exception:
                 _LOGGER.exception("Unexpected exception")
                 errors["base"] = "unknown"
@@ -89,16 +88,6 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             errors=errors,
         )
 
-    async def validate_country(self, data):
-        """Validate country."""
-        if data[CONF_COUNTRY] not in COUNTRIES:
-            raise MeteoAlarmUnrecognizedCountryError
-        self._country = data[CONF_COUNTRY]
-
-        # Return info that you want to store in the config entry.
-        return {
-            CONF_COUNTRY: data[CONF_COUNTRY],
-        }
 
     # pylint: disable=broad-except
     async def async_step_other(self, user_input=None, data=None):
@@ -111,22 +100,17 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
 
         if user_input is not None:
             try:
-                info = await self.validate_input(user_input)
+                # Get the data from the form
+                info = dict(user_input)
                 # Complement 'info' with passed 'data'
                 info.update(self._data)
-            except MeteoAlarmUnrecognizedRegionError:
-                errors["region"] = "unrecognized_region"
-                user_input[CONF_REGION] = ""
-            except MeteoAlarmUnavailableLanguageError:
-                errors["language"] = "not_available_language"
-                user_input[CONF_LANGUAGE] = DEFAULT_LANGUAGE
-            except InvalidAwarenessType:
-                errors["awareness_type"] = "invalid_awareness_type"
-                user_input[CONF_AWARENESS_TYPES] = DEFAULT_AWARENESS_TYPES
             except Exception:
                 _LOGGER.exception("Unexpected exception")
                 errors["base"] = "unknown"
             if errors:
+                user_input[CONF_REGION] = ""
+                user_input[CONF_LANGUAGE] = DEFAULT_LANGUAGE
+                user_input[CONF_AWARENESS_TYPES] = DEFAULT_AWARENESS_TYPES
                 return self.async_show_form(
                     step_id="other",
                     data_schema=vol.Schema(
@@ -178,27 +162,6 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             errors=errors,
         )
 
-    async def validate_input(self, data):
-        """Validate region, language and list of awareness_types."""
-        # Clean and update
-        data[CONF_REGION] = data[CONF_REGION].strip("'\"")
-
-        if data[CONF_REGION] not in self._regions:
-            raise MeteoAlarmUnrecognizedRegionError
-
-        if data[CONF_LANGUAGE] and data[CONF_LANGUAGE] not in self._languages:
-            raise MeteoAlarmUnavailableLanguageError
-
-        for awt in data[CONF_AWARENESS_TYPES]:
-            if awt not in DEFAULT_AWARENESS_TYPES:
-                raise InvalidAwarenessType
-
-        # Return info that you want to store in the config entry.
-        return {
-            CONF_REGION: data[CONF_REGION],
-            CONF_LANGUAGE: data[CONF_LANGUAGE],
-            CONF_AWARENESS_TYPES: data[CONF_AWARENESS_TYPES],
-        }
 
     async def async_get_languages(self):
         """Get available languages for country if possible."""

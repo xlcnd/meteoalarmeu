@@ -4,9 +4,6 @@
             "already_configured": "Already configured. Only a single configuration possible."
         },
         "error": {
-            "unrecognized_country": "Unrecognized country code",
-            "unrecognized_region": "Unrecognized region for country",
-            "not_available_language": "Language not available for country",
             "unknown": "Unexpected error"
         },
         "step": {
