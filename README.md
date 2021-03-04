@@ -27,17 +27,14 @@ To do it manually:
 3. Restart Home-Assistant.
 
 
-To continue the installation, you need to know the **exact name** of your region **as reported by your national agency to meteoalarm.eu** (e.g. Kreis Ahrweiler). For that, [search here][6] (just the **exact name of the region** without the code) or in the step 5 below, **enter something in the region's field (e.g. 'z')** and after `SUBMIT` choose your region!
-
-
 Now do the following steps:
 
 ```markdown
 1. go to Configuration > Integrations
 2. then click '+ ADD INTEGRATION'
 3. choose 'meteoalarmeu'
-4. on Country choose (e.g. Deutschland) (adapt to your case!)
-5. on Region write (e.g. Kreis Ahrweiler) (adapt to your case!)
+4. on Country choose (e.g. Deutschland) (click SUBMIT!)
+5. on Region choose (e.g. Kreis Ahrweiler) (adapt to your case!)
 6. on Language choose (e.g. deutsch) (adapt to your case!)
 7. left the rest as it is OR unselect some events
 8. click 'SUBMIT'
