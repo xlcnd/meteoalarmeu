@@ -7,10 +7,7 @@ from homeassistant import config_entries, exceptions
 from homeassistant.const import CONF_NAME
 
 from .client import AWARENESS_TYPES as AWARENESS_TYPES_API
-from .client import (
-    get_languages,
-    get_regions,
-)
+from .client import get_languages, get_regions
 from .const import DOMAIN  # pylint:disable=unused-import
 from .const import (
     CONF_AWARENESS_TYPES,
@@ -63,7 +60,7 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
 
                 # Get 'country'
                 self._country = user_input[CONF_COUNTRY]
-                info[CONF_COUNTRY] = user_input[CONF_COUNTRY] 
+                info[CONF_COUNTRY] = user_input[CONF_COUNTRY]
 
                 # Sync 'regions' and 'languages'
                 await self.async_get_regions()
@@ -87,7 +84,6 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             ),
             errors=errors,
         )
-
 
     # pylint: disable=broad-except
     async def async_step_other(self, user_input=None, data=None):
@@ -161,7 +157,6 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             ),
             errors=errors,
         )
-
 
     async def async_get_languages(self):
         """Get available languages for country if possible."""
