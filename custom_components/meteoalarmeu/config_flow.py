@@ -41,6 +41,7 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         self._regions = [""]
         self._data = {}
         self._data[CONF_LANGUAGE] = DEFAULT_LANGUAGE
+        self._data[CONF_NAME] = DEFAULT_NAME
 
     async def async_already_configured(self):
         for entry in self._async_current_entries():
@@ -50,7 +51,7 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
 
     # pylint: disable=broad-except
     async def async_step_user(self, user_input=None):
-        """Handle the main step."""
+        """Handle the initial step."""
         if await self.async_already_configured():
             return self.async_abort(reason="already_configured")
 
@@ -64,9 +65,6 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                 # Sync 'regions' and 'languages'
                 await self.async_get_regions()
                 await self.async_get_languages()
-
-                # Add 'name'
-                self._data[CONF_NAME] = DEFAULT_NAME
 
                 return await self.async_step_other()
 
@@ -86,7 +84,7 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
 
     # pylint: disable=broad-except
     async def async_step_other(self, user_input=None):
-        """Handle the sub step."""
+        """Handle the final step."""
         errors = {}
 
         if user_input is not None:
