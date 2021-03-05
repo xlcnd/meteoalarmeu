@@ -66,6 +66,7 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                 await self.async_get_regions()
                 await self.async_get_languages()
 
+                # Next step
                 return await self.async_step_other()
 
             except Exception:
@@ -115,6 +116,7 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                     ),
                     errors=errors,
                 )
+            # Create entry
             return await self.async_handle_create_entry()
 
         return self.async_show_form(
