@@ -148,8 +148,7 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
 
         # Convert 'country' and 'language' to ISO
         self._data[CONF_COUNTRY] = cmap(self._data[CONF_COUNTRY])
-        if self._data[CONF_LANGUAGE]:
-            self._data[CONF_LANGUAGE] = lmap(self._data[CONF_LANGUAGE])
+        self._data[CONF_LANGUAGE] = lmap(self._data[CONF_LANGUAGE])
 
         # Create new entry in 'core.config_entries'
         return self.async_create_entry(title=self._data[CONF_NAME], data=self._data)
