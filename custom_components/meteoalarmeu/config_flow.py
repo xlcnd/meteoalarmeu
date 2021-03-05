@@ -177,8 +177,3 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             )
         else:
             self._regions = [""]
-
-
-# pylint:disable=too-few-public-methods
-class InvalidAwarenessType(exceptions.HomeAssistantError):
-    """Error to indicate there is invalid awareness type."""
