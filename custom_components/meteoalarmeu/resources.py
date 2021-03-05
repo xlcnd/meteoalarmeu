@@ -148,7 +148,7 @@ def cmap(country):
         "Slovensko": "SK",
         "United Kingdom": "UK",
     }
-    return countries_map.get(country)
+    return countries_map.get(country, "")
 
 
 def lmap(language):
@@ -213,4 +213,4 @@ def lmap(language):
         "български": "bg",
         "עברית": "he",
     }
-    return languages_map.get(language)
+    return languages_map.get(language, "")
