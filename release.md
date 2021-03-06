@@ -1,4 +1,4 @@
-*This is a *config flow* component**.
+*This is a **config flow** component*.
 
 
 > WARNING: If you are updating from a previous version you should delete any configuration text related with this integration from your `configuration.yaml`, since *yaml configuration* is now **NOT supported** and this integration will **STOP to work (if you don't do it)**!.
