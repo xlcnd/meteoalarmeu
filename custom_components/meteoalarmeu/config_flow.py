@@ -93,6 +93,7 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                 # Get the data from the form
                 self._data.update(user_input)
             except Exception:
+                # This should NEVER happen!
                 _LOGGER.exception("Unexpected exception")
                 errors["base"] = "unknown"
                 user_input[CONF_REGION] = ""
