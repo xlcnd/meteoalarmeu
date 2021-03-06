@@ -93,32 +93,11 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                 # Get the data from the form
                 self._data.update(user_input)
             except Exception:
-                # This should NEVER happen!
                 _LOGGER.exception("Unexpected exception")
                 errors["base"] = "unknown"
-                user_input[CONF_REGION] = ""
-                user_input[CONF_LANGUAGE] = DEFAULT_LANGUAGE
-                user_input[CONF_AWARENESS_TYPES] = DEFAULT_AWARENESS_TYPES
-                return self.async_show_form(
-                    step_id="other",
-                    data_schema=vol.Schema(
-                        {
-                            vol.Required(
-                                CONF_REGION, default=user_input[CONF_REGION]
-                            ): vol.In(self._regions),
-                            vol.Optional(
-                                CONF_LANGUAGE, default=user_input[CONF_LANGUAGE]
-                            ): vol.In(self._languages),
-                            vol.Optional(
-                                CONF_AWARENESS_TYPES,
-                                default=user_input[CONF_AWARENESS_TYPES],
-                            ): cv.multi_select(DEFAULT_AWARENESS_TYPES),
-                        }
-                    ),
-                    errors=errors,
-                )
-            # Create entry
-            return await self.async_handle_create_entry()
+            if not errors:
+                # Create entry
+                return await self.async_handle_create_entry()
 
         return self.async_show_form(
             step_id="other",
