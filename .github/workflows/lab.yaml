@@ -13,4 +13,4 @@ jobs:
       - name: Check if it is 'NOT RELEASED'
         shell: bash
         run: |
-          [[ ! -z $(tail -1 CHANGES.txt | grep -o 'NOT RELEASED') ]] && echo 'NOT RELEASED detected! Skip release.' && exit 1
+          [[ ! -z $(tail -1 CHANGES.txt | grep -o 'NOT RELEASED') ]] && echo 'NOT RELEASED detected! Skip release.' && exit 0
