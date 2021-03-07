@@ -4,7 +4,7 @@
 > WARNING: If you are updating from a previous version you should delete any configuration text related with this integration from your `configuration.yaml`, since *yaml configuration* is now **NOT supported** and this integration will **STOP to work (if you don't do it)**!.
 
 
-**TENTATIVE...**
+**TENTATIVE... Just some refactoring**
 
 A very useful set of automations are in the [documentation][1]. You can have more like these by consulting the [HA Forum][2].
 
