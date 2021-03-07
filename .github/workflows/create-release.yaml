@@ -13,6 +13,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+      - name: Check if it is 'NOT RELEASED'
+        shell: bash
+        run: |
+          [[ ! -z $(tail -1 CHANGES.txt | grep -o 'NOT RELEASED') ]] && echo 'NOT RELEASED detected! Skip release.' && exit 1 || exit 0
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
