@@ -11,7 +11,7 @@ from .client import (
     get_languages,
     get_regions,
 )
-from .const import DOMAIN  # pylint:disable=unused-import
+from .const import DOMAIN
 from .const import (
     CONF_AWARENESS_TYPES,
     CONF_COUNTRY,
@@ -30,6 +30,7 @@ DEFAULT_AWARENESS_TYPES = sorted(AWARENESS_TYPES_API)
 _LOGGER = logging.getLogger(__name__)
 
 
+@config_entries.HANDLERS.register(DOMAIN)
 class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
     """Handle a config flow for meteoalarmeu."""
 
