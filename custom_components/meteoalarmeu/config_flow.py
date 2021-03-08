@@ -5,6 +5,7 @@ import homeassistant.helpers.config_validation as cv
 import voluptuous as vol
 from homeassistant import config_entries, exceptions
 from homeassistant.const import CONF_NAME
+from homeassistant.core import callback
 
 from .client import AWARENESS_TYPES as AWARENESS_TYPES_API
 from .client import (
@@ -30,7 +31,6 @@ DEFAULT_AWARENESS_TYPES = sorted(AWARENESS_TYPES_API)
 _LOGGER = logging.getLogger(__name__)
 
 
-@config_entries.HANDLERS.register(DOMAIN)
 class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
     """Handle a config flow for meteoalarmeu."""
 
@@ -64,8 +64,8 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                 self._data[CONF_COUNTRY] = user_input[CONF_COUNTRY]
 
                 # Sync 'regions' and 'languages'
-                await self.async_get_regions()
-                await self.async_get_languages()
+                self.async_get_regions()
+                self.async_get_languages()
 
                 # Next step
                 return await self.async_step_other()
@@ -134,26 +134,24 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         # Create new entry in 'core.config_entries'
         return self.async_create_entry(title=self._data[CONF_NAME], data=self._data)
 
-    async def async_get_languages(self):
+    @callback
+    def async_get_languages(self):
         """Get available languages for country if possible."""
         if self._data[CONF_COUNTRY]:
             self._languages = [DEFAULT_LANGUAGE]
             self._languages.extend(
                 map(
                     lmap,
-                    await self.hass.async_add_executor_job(
-                        get_languages, cmap(self._data[CONF_COUNTRY])
-                    ),
+                    get_languages(cmap(self._data[CONF_COUNTRY])),
                 )
             )
         else:
             self._languages = LANGUAGES
 
-    async def async_get_regions(self):
+    @callback
+    def async_get_regions(self):
         """Get the regions of the country if possible."""
         if self._data[CONF_COUNTRY]:
-            self._regions = await self.hass.async_add_executor_job(
-                get_regions, cmap(self._data[CONF_COUNTRY])
-            )
+            self._regions = get_regions(cmap(self._data[CONF_COUNTRY]))
         else:
             self._regions = [""]
