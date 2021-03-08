@@ -8,11 +8,8 @@ from homeassistant.const import CONF_NAME
 from homeassistant.core import callback
 
 from .client import AWARENESS_TYPES as AWARENESS_TYPES_API
-from .client import (
-    get_languages,
-    get_regions,
-)
-from .const import DOMAIN
+from .client import get_languages, get_regions
+from .const import DOMAIN  # pylint: disable=unused-import
 from .const import (
     CONF_AWARENESS_TYPES,
     CONF_COUNTRY,
