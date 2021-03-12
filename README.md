@@ -88,8 +88,8 @@ automation:
   trigger:
   - platform: event
     event_type: persistent_notifications_updated
-  - platform: time
-    at: '23:59:00'
+  - platform: time_pattern
+    minutes: '/31'
   action:
   - delay: '00:00:10'
   - service: persistent_notification.dismiss
