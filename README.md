@@ -105,6 +105,8 @@ automation:
 
 ```
 
+Press [here][12] to download these automations!
+
 For the attribute `awareness_type` (**events**) the possible values are:<a name="events"></a>
 
 ```
@@ -170,3 +172,4 @@ This component uses [meteoalarm.eu][9]'s **rss feeds** which are available for *
 [9]: https://www.meteoalarm.eu
 [10]: https://community.home-assistant.io/search?q=meteoalarmeu%20after%3A2021-02-22%20status%3Aopen%20tags%3Aautomation%2Ctemplates%2Cblueprint
 [11]: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
+[12]: https://gist.githubusercontent.com/xlcnd/91a35c7d2363542f1c944fe3af08f88f/raw/73f87969187a6f56df093066e5a4c5f317eada8a/meteoalarmeu.yaml
