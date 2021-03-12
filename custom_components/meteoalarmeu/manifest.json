@@ -6,7 +6,7 @@
   "documentation": "https://github.com/xlcnd/meteoalarmeu",
   "issue_tracker": "https://github.com/xlcnd/meteoalarmeu/issues",
   "requirements": [
-    "meteoalarm-rssapi==1.0.1"
+    "meteoalarm-rssapi==1.0.2"
   ],
   "ssdp": [],
   "zeroconf": [],
