@@ -126,32 +126,20 @@ For the attribute `awareness_type` (**events**) the possible values are:<a name=
 For the attribute `awareness_level` (**severity**) the possibilities are (with the meaning following):<a name="severity"></a>
 
 
-```
-Red
-  The weather is very dangerous. Exceptionally intense meteorological phenomena have been forecast.
-  Major damage and accidents are likely, in many cases with threat to life and limb, over a wide
-  area. Keep frequently informed about detailed expected meteorological conditions and risks.
-  Follow orders and any advice given by your authorities under all circumstances,
-  be prepared for extraordinary measures.
+**Red**
+> The weather is very dangerous. Exceptionally intense meteorological phenomena have been forecast.  Major damage and accidents are likely, in many cases with threat to life and limb, over a wide area. Keep frequently informed about detailed expected meteorological conditions and risks.  Follow orders and any advice given by your authorities under all circumstances, be prepared for extraordinary measures.
 
-Orange
-  The weather is dangerous. Unusual meteorological phenomena have been forecast.
-  Damage and casualties are likely to happen. Be very vigilant and keep regularly informed
-  about the detailed expected meteorological conditions. Be aware of the risks that might be
-  unavoidable. Follow any advice given by your authorities.
+**Orange**
+> The weather is dangerous. Unusual meteorological phenomena have been forecast.  Damage and casualties are likely to happen. Be very vigilant and keep regularly informed about the detailed expected meteorological conditions. Be aware of the risks that might be unavoidable. Follow any advice given by your authorities.
 
-Yellow
-  The weather is potentially dangerous. The weather phenomena that have been forecast are not
-  unusual, but be attentive if you intend to practice activities exposed to meteorological risks.
-  Keep informed about the expected meteorological conditions and do not take any avoidable risk.
+**Yellow**
+> The weather is potentially dangerous. The weather phenomena that have been forecast are not unusual, but be attentive if you intend to practice activities exposed to meteorological risks.  Keep informed about the expected meteorological conditions and do not take any avoidable risk.
 
-Green (empty alert)
-  No particular awareness of the weather is required.
+**Green** (empty alert)
+> No particular awareness of the weather is required.
 
-White (error MeteoAlarmMissingInfo)
-  Missing, insufficient, outdated or suspicious data.
-
-```
+**White** (error MeteoAlarmMissingInfo)
+> Missing, insufficient, outdated or suspicious data.
 
 
 If by any reason the server becames unavailable or sends an error status (and this happens a lot with meteoalarm.eu!) the **sensor becomes unavailable too**, if in the next update the server is ok, **it becomes available again**.
