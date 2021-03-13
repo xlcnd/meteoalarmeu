@@ -25,6 +25,8 @@ TIMEOUT = 9
 
 
 class Client:
+    """Interface for 'library API' (meteoalarm-rssapi)."""
+
     def __init__(self, country, region, language=None, awareness_types=AWARENESS_TYPES):
         self._country = country
         self._region = region
@@ -33,6 +35,7 @@ class Client:
         self._api = self._get_api()
 
     def update(self, country=None, region=None, language=None, awareness_types=None):
+        """Update client with new parameters."""
         if not any(country, region, language, awareness_types):
             return
         self._country = country or self._country
@@ -66,10 +69,12 @@ class Client:
 
     @staticmethod
     def languages():
+        """Return the list of available languages."""
         return _languages_list
 
     @staticmethod
     def countries():
+        """Return the list of participating countries."""
         return _countries_list
 
     @staticmethod
@@ -82,7 +87,7 @@ class Client:
         return self._api.country_languages()
 
     def alerts(self):
-        """Get localized and filteres alerts."""
+        """Get localized and filtered alerts."""
         alarms = self._api.alerts()
         if alarms:
             # filter
