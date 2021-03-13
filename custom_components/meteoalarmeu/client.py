@@ -75,9 +75,9 @@ class Client:
                 try:
                     ts_from = timestamp_local(as_timestamp(alert["from"]))[:-3]
                     ts_until = timestamp_local(as_timestamp(alert["until"]))[:-3]
-                    ts_published = timestamp_local(
-                        as_timestamp(alert["published"])
-                    )[:-3]
+                    ts_published = timestamp_local(as_timestamp(alert["published"]))[
+                        :-3
+                    ]
                     success = True
                 except ValueError:
                     success = False
