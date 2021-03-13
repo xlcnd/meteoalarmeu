@@ -6,7 +6,6 @@ A `custom_component` for [Home-Assistant](https://www.home-assistant.io/) that i
 
 You will get a `binary_sensor.meteoalarmeu` identity that is `on` when there are alerts for your region and with attributes useful for automations.
 
-> WARNING: If you are updating from a previous version you should delete any configuration text related with this integration from your `configuration.yaml`, since `yaml configuration` is now **NOT supported** and this integration will **STOP to work (if you don't do it)**!.
 
 
 **How to install?**<a name="install"></a>
