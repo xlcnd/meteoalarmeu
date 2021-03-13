@@ -25,4 +25,4 @@ v2021.5.0, 2021-02-26 -- Improved user expirence (uses new api v0.3.8).
 v2021.5.1, 2021-03-01 -- Improved user expirence (no ISO codes).
 v2021.5.2, 2021-03-05 -- Change to a multi-step flow.
 v2021.5.3, 2021-03-08 -- Just some refactoring.
-v2021.5.4, 2021-03-08 -- TENTATIVE
+v2021.5.4, 2021-03-08 -- TENTATIVE Improved logging and uses new api v1.0.2.
