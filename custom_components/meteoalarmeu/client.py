@@ -47,10 +47,21 @@ class Client:
                 self._country, self._region, self._language, timeout=TIMEOUT
             )
         except MeteoAlarmUnrecognizedCountryError:
+            _LOGGER.debug("Unrecognized country (%s)", self._country)
             raise MeteoAlarmUnrecognizedCountryError()
         except MeteoAlarmUnrecognizedRegionError:
+            _LOGGER.debug(
+                "Unrecognized region (%s) for this country (%s)",
+                self._region,
+                self._country,
+            )
             raise MeteoAlarmUnrecognizedRegionError()
         except MeteoAlarmUnavailableLanguageError:
+            _LOGGER.debug(
+                "Unrecognized language (%s) for this country (%s)",
+                self._language,
+                self._country,
+            )
             raise MeteoAlarmUnavailableLanguageError()
 
     @staticmethod
@@ -61,25 +72,30 @@ class Client:
     def countries():
         return _countries_list
 
+    @staticmethod
+    def local_ts(iso_ts):
+        """Change to local date/time and drop the seconds."""
+        return timestamp_local(as_timestamp(iso_ts))[:-3]
+
     def languages_for_country(self):
+        """Return languages for country."""
         return self._api.country_languages()
 
     def alerts(self):
+        """Get localized and filteres alerts."""
         alarms = self._api.alerts()
         if alarms:
             # filter
             alerts = [m for m in alarms if m["awareness_type"] in self._awareness_types]
             # change to local date/time (drop the seconds)
-            local_ts = lambda x: timestamp_local(as_timestamp(x))[:-3]
             for alert in alerts:
                 success = False
                 try:
-                    ts_from = local_ts(alert["from"])
-                    ts_until = local_ts(alert["until"])
-                    ts_published = tlocal_ts(alert["published"])
+                    ts_from = self.local_ts(alert["from"])
+                    ts_until = self.local_ts(alert["until"])
+                    ts_published = self.local_ts(alert["published"])
                     success = True
                 except ValueError:
-                    success = False
                     _LOGGER.error("Not possible to convert to local time")
                 if success:
                     alert["from"] = ts_from
