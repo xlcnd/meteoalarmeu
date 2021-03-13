@@ -78,7 +78,7 @@ class Client:
         return _countries_list
 
     @staticmethod
-    def local_ts(iso_ts):
+    def _local_ts(iso_ts):
         """Change to local date/time and drop the seconds."""
         return timestamp_local(as_timestamp(iso_ts))[:-3]
 
@@ -86,25 +86,30 @@ class Client:
         """Return languages for country."""
         return self._api.country_languages()
 
+    def _filter(self, alarms):
+        return [m for m in alarms if m["awareness_type"] in self._awareness_types]
+
+    def _localize(self, alarm):
+        success = False
+        try:
+            ts_from = self._local_ts(alarm["from"])
+            ts_until = self._local_ts(alarm["until"])
+            ts_published = self._local_ts(alarm["published"])
+            success = True
+        except ValueError:
+            _LOGGER.error("Not possible to convert to local time")
+        if success:
+            alarm["from"] = ts_from
+            alarm["until"] = ts_until
+            alarm["published"] = ts_published
+        return alarm
+
     def alerts(self):
         """Get localized and filtered alerts."""
         alarms = self._api.alerts()
         if alarms:
-            # filter
-            alerts = [m for m in alarms if m["awareness_type"] in self._awareness_types]
-            # change to local date/time (drop the seconds)
+            alerts = self._filter(alarms)
             for alert in alerts:
-                success = False
-                try:
-                    ts_from = self.local_ts(alert["from"])
-                    ts_until = self.local_ts(alert["until"])
-                    ts_published = self.local_ts(alert["published"])
-                    success = True
-                except ValueError:
-                    _LOGGER.error("Not possible to convert to local time")
-                if success:
-                    alert["from"] = ts_from
-                    alert["until"] = ts_until
-                    alert["published"] = ts_published
+                alert = self._localize(alert)
             alarms = alerts
         return alarms
