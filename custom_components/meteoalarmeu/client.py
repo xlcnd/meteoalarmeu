@@ -77,11 +77,6 @@ class Client:
         """Return the list of participating countries."""
         return _countries_list
 
-    @staticmethod
-    def _local_ts(iso_ts):
-        """Change to local date/time and drop the seconds."""
-        return timestamp_local(as_timestamp(iso_ts))[:-3]
-
     def languages_for_country(self):
         """Return languages for country."""
         return self._api.country_languages()
@@ -89,12 +84,18 @@ class Client:
     def _filter(self, alarms):
         return [m for m in alarms if m["awareness_type"] in self._awareness_types]
 
-    def _localize(self, alarm):
+    @staticmethod
+    def _local_ts(iso_ts):
+        """Change to local date/time and drop the seconds."""
+        return timestamp_local(as_timestamp(iso_ts))[:-3]
+
+    @staticmethod
+    def _localize(alarm):
         success = False
         try:
-            ts_from = self._local_ts(alarm["from"])
-            ts_until = self._local_ts(alarm["until"])
-            ts_published = self._local_ts(alarm["published"])
+            ts_from = Client._local_ts(alarm["from"])
+            ts_until = Client._local_ts(alarm["until"])
+            ts_published = Client._local_ts(alarm["published"])
             success = True
         except ValueError:
             _LOGGER.error("Not possible to convert to local time")
@@ -109,5 +110,5 @@ class Client:
         alarms = self._api.alerts()
         if alarms:
             alarms = self._filter(alarms)
-            alarms = [self._localize(alarm) for alarm in alarms]
+            alarms = [Client._localize(alarm) for alarm in alarms]
         return alarms
