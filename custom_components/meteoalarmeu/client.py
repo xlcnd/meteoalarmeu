@@ -108,8 +108,6 @@ class Client:
         """Get localized and filtered alerts."""
         alarms = self._api.alerts()
         if alarms:
-            alerts = self._filter(alarms)
-            for alert in alerts:
-                alert = self._localize(alert)
-            alarms = alerts
+            alarms = self._filter(alarms)
+            alarms = [self._localize(alarm) for alarm in alarms]
         return alarms
