@@ -71,13 +71,20 @@ class Client:
             alerts = [m for m in alarms if m["awareness_type"] in self._awareness_types]
             # change to local date/time (drop the seconds)
             for alert in alerts:
+                success = False
                 try:
-                    alert["from"] = timestamp_local(as_timestamp(alert["from"]))[:-3]
-                    alert["until"] = timestamp_local(as_timestamp(alert["until"]))[:-3]
-                    alert["published"] = timestamp_local(
+                    ts_from = timestamp_local(as_timestamp(alert["from"]))[:-3]
+                    ts_until = timestamp_local(as_timestamp(alert["until"]))[:-3]
+                    ts_published = timestamp_local(
                         as_timestamp(alert["published"])
                     )[:-3]
+                    success = True
                 except ValueError:
+                    success = False
                     _LOGGER.error("Not possible to convert to local time")
+                if success:
+                    alert["from"] = ts_from
+                    alert["until"] = ts_until
+                    alert["published"] = ts_published
             alarms = alerts
         return alarms
