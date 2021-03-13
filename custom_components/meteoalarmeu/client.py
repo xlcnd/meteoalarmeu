@@ -70,14 +70,13 @@ class Client:
             # filter
             alerts = [m for m in alarms if m["awareness_type"] in self._awareness_types]
             # change to local date/time (drop the seconds)
+            local_ts = lambda x: timestamp_local(as_timestamp(x))[:-3]
             for alert in alerts:
                 success = False
                 try:
-                    ts_from = timestamp_local(as_timestamp(alert["from"]))[:-3]
-                    ts_until = timestamp_local(as_timestamp(alert["until"]))[:-3]
-                    ts_published = timestamp_local(as_timestamp(alert["published"]))[
-                        :-3
-                    ]
+                    ts_from = local_ts(alert["from"])
+                    ts_until = local_ts(alert["until"])
+                    ts_published = tlocal_ts(alert["published"])
                     success = True
                 except ValueError:
                     success = False
