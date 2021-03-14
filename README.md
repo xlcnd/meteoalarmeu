@@ -39,7 +39,7 @@ Now do the following steps:
 If all goes well, you have a new sensor `binary_sensor.meteoalarmeu`. You should wait for some minutes (up until 30m!) for HA to start to update the sensor. Meanwhile, add your automations for the sensor and **don't forget** to reload them.
 
 
-You can do a lot with automations... some useful ones would be:<a name="automations"></a>
+You can do a lot with automations... some useful ones:<a name="automations"></a>
 
 ```yaml
 automation:
