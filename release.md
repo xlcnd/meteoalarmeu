@@ -5,10 +5,9 @@
 
 
 ## Main changes:
-**
-1. Improved logging
-2. Fix a bug on the automation template
-3. Uses new api v1.0.2**
+1. **Improved logging**
+2. **Fix a bug on the automation template**
+3. **Uses new api v1.0.2**
 
 A very useful set of automations are in the [documentation][1].
 
