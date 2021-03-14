@@ -69,7 +69,7 @@ automation:
             Effective from **{{ state_attr('binary_sensor.meteoalarmeu', 'from' + ext) }}** until **{{ state_attr('binary_sensor.meteoalarmeu', 'until' + ext) }}**
           notification_id: >
             {% set ext = "" if repeat.first else "_" + (repeat.index-1)|string %}
-            meteoalarm-{{ state_attr('binary_sensor.meteoalarmeu', 'alert_id' + ext) }}
+            meteoalarm_{{ state_attr('binary_sensor.meteoalarmeu', 'alert_id' + ext) }}
 
 
 - alias: Update weather warnings on HA start
