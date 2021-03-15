@@ -36,8 +36,7 @@ Now do the following steps:
 ```
 
 
-If all goes well, you have a new sensor `binary_sensor.meteoalarmeu`. You should wait for some minutes (up until 30m!) for HA to start to update the sensor. Meanwhile, add your automations for the sensor and **don't forget** to reload them.
-
+If all goes well, you have a new sensor `binary_sensor.meteoalarmeu`. You should wait for some minutes (up until 30m!) for HA to start to update the sensor.
 
 For the attribute `awareness_type` (**events**) the possible values are:<a name="events"></a>
 
