@@ -86,7 +86,7 @@ This component uses [meteoalarm.eu][9]'s **rss feeds** which are available for *
 [2]: https://github.com/xlcnd/meteoalarmeu/issues?q=is%3Aissue+is%3Aopen+label%3Abug
 [3]: https://github.com/xlcnd/meteoalarmeu/releases
 [4]: https://hacs.xyz/
-[5]: https://github.com/xlcnd/meteoalarmeu/issues/3
+[5]: https://github.com/xlcnd/meteoalarmeu/issues?q=is%3Aissue+is%3Aopen+label%3Ainfo
 [6]: https://github.com/xlcnd/meteoalarm-rssapi/blob/main/meteoalarm_rssapi/_resources.py
 [7]: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
 [8]: https://github.com/xlcnd/meteoalarm-rssapi/issues/1
