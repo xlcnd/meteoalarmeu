@@ -137,10 +137,7 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         if self._data[CONF_COUNTRY]:
             self._languages = [DEFAULT_LANGUAGE]
             self._languages.extend(
-                map(
-                    lmap,
-                    get_languages(cmap(self._data[CONF_COUNTRY])),
-                )
+                lmap(l) for l in get_languages(cmap(self._data[CONF_COUNTRY]))
             )
         else:
             self._languages = LANGUAGES
