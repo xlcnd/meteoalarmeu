@@ -27,4 +27,4 @@ v2021.5.2, 2021-03-05 -- Change to a multi-step flow.
 v2021.5.3, 2021-03-08 -- Just some refactoring.
 v2021.5.4, 2021-03-14 -- Improved logging and uses new api v1.0.2.
 v2021.5.5, 2021-03-15 -- Fix documentaion.
-v2021.5.6, 2021-03-15 -- TENTATIVE
+v2021.5.6, 2021-03-15 -- Add 'language parsisng' to MD.
