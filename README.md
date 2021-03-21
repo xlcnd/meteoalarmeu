@@ -75,7 +75,7 @@ For the attribute `awareness_level` (**severity**) the possibilities are (with t
 > Missing, insufficient, outdated or suspicious data.
 
 
-If by any reason the server becames unavailable or sends an error status (and this happens a lot with meteoalarm.eu!) the **sensor becomes unavailable too**, if in the next update the server is ok, **it becomes available again**.
+If by any reason the server becomes unavailable or sends an error status (and this happens a lot with meteoalarm.eu!) the **sensor becomes unavailable too**, if in the next update the server is ok, **it becomes available again**.
 
 This component uses [meteoalarm.eu][9]'s **rss feeds** which are available for **all** [(active) countries][8].
 
