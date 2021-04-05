@@ -13,7 +13,7 @@ from .const import (
     DOMAIN,
 )
 
-__version__ = "2021.5.7"
+__version__ = "2021.5.8"
 
 PLATFORMS = ["binary_sensor"]
 
