@@ -28,4 +28,4 @@ v2021.5.3, 2021-03-08 -- Just some refactoring.
 v2021.5.4, 2021-03-14 -- Improved logging and uses new api v1.0.2.
 v2021.5.5, 2021-03-15 -- Fix documentation.
 v2021.5.6, 2021-03-19 -- Add 'language parsisng' to MD.
-v2021.5.7, 2021-03-19 -- Activate UK.
+v2021.5.7, 2021-04-05 -- Activate UK.
