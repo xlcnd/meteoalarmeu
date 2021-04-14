@@ -101,6 +101,7 @@ class Client:
         return self._api.country_languages()
 
     def _filter(self, alarms):
+        """Filter messages by event and severity user choices."""
         return [
             m
             for m in alarms
