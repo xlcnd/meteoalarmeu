@@ -6,6 +6,7 @@ from homeassistant.core import HomeAssistant
 
 from .client import Client
 from .const import (
+    CONF_AWARENESS_LEVELS,
     CONF_AWARENESS_TYPES,
     CONF_COUNTRY,
     CONF_LANGUAGE,
@@ -30,6 +31,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
         entry.data[CONF_COUNTRY],
         entry.data[CONF_REGION],
         entry.data[CONF_LANGUAGE],
+        entry.data[CONF_AWARENESS_LEVELS],
         entry.data[CONF_AWARENESS_TYPES],
     )
 
