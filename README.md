@@ -31,7 +31,7 @@ Now do the following steps:
 4. on Country choose (e.g. Deutschland) and then click 'SUBMIT'
 5. on Region choose (e.g. Kreis Ahrweiler)
 6. on Language choose (e.g. deutsch)
-7. left the rest as it is OR unselect some events
+7. left the rest as it is OR unselect some events or severity levels
 8. click 'SUBMIT'
 ```
 
