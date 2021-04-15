@@ -82,7 +82,7 @@ This component uses [meteoalarm.eu][9]'s **rss feeds** which are available for *
 [More info...][5]
 
 
-[1]: https://github.com/xlcnd/meteoalarmeu/archive/v2021.5.8.zip
+[1]: https://github.com/xlcnd/meteoalarmeu/archive/v2021.5.9.zip
 [2]: https://github.com/xlcnd/meteoalarmeu/issues?q=is%3Aissue+is%3Aopen+label%3Abug
 [3]: https://github.com/xlcnd/meteoalarmeu/releases
 [4]: https://hacs.xyz/
