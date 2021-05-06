@@ -36,7 +36,7 @@ Now do the following steps:
 ```
 
 
-If all goes well, you have a new sensor `binary_sensor.meteoalarmeu`. You should wait for some minutes (up until 30m!) for HA to start to update the sensor.
+If all goes well, you have a new sensor `binary_sensor.meteoalarmeu`. **You should wait for some minutes (up until 30m!) for HA to start to update the sensor.**
 
 For the attribute `awareness_type` (**events**) the possible values are:<a name="events"></a>
 
@@ -78,8 +78,6 @@ For the attribute `awareness_level` (**severity**) the possibilities are (with t
 If by any reason the server becomes unavailable or sends an error status (and this happens a lot with meteoalarm.eu!) the **sensor becomes unavailable too**, if in the next update the server is ok, **it becomes available again**.
 
 This component uses [meteoalarm.eu][9]'s **rss feeds** which are available for **all** [(active) countries][8].
-
-[More info...][5]
 
 
 [1]: https://github.com/xlcnd/meteoalarmeu/archive/v2021.5.9.zip
