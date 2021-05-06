@@ -14,5 +14,6 @@
   "dependencies": [],
   "codeowners": [
     "@xlcnd"
-  ]
+  ],
+  "iot_class": "cloud_push"
 }
